@@ -50,29 +50,33 @@ public class UserController {
         return verificationTokenService.verifyEmail(code).getBody();
     }
     
-    @GetMapping("/customer-login")
+    @GetMapping("/home")
+    public String login(Model model, String error, String logout) {
+
+        return "home";
+    }
+
+    
+    
+    @GetMapping("/Customer-login")
     public String customerlogin(Model model, String error, String logout) {
-        if (error != null)
-            model.addAttribute("error", "Your username and password is invalid.");
-
-        if (logout != null)
-            model.addAttribute("message", "You have been logged out successfully.");
-
+        
         return "Customerlogin";
     }
-    @GetMapping("/delivery-login")
+    @GetMapping("/Delivery-login")
     public String deliverylogin(Model model, String error, String logout) {
-        if (error != null)
-            model.addAttribute("error", "Your username and password is invalid.");
-
-        if (logout != null)
-            model.addAttribute("message", "You have been logged out successfully.");
-
-        return "Customerlogin";
+        
+        return "Deliverylogin";
     }
-
-    @GetMapping({"/", "/welcome"})//for both /,welcome this will be called
-    public String welcome(Model model) {
-        return "welcome";
+    @PostMapping("/Customer-login")//for both /,welcome this will be called
+    public String welcomecustomer(Model model) {
+        return "CustomerProfile";
     }
+    @PostMapping("/Delivery-login")//for both /,welcome this will be called
+    public String welcomedelivery(Model model) {
+        return "DeliveryProfile";
+    }
+    
+
+    
 }

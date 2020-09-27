@@ -177,14 +177,14 @@ code {
 <div class="centered">
     <img src="customer.png">
     <h2>Want to order food?</h2>
-    <form action="Customerlogin.jsp">
+    <form action="${contextPath}/Customer-login">
     <input type="submit" value="login here">
     </form>
   </div>
 <div class="positionRight">
     <img src="delivery.jpeg">
     <h2>Want to order or deliver food?</h2>
-    <form action="Deliverylogin.jsp">
+    <form  action="${contextPath}/Delivery-login">
     <input type="submit" value="login here">
     </form>
   </div>
