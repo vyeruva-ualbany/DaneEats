@@ -34,6 +34,16 @@
                 </div>
             </spring:bind>
             
+            <spring:bind path="roles">
+                <div class="form-group ${status.error ? 'has-error' : ''}">
+                	<form:label for="roles">Role:</form:label>
+                    <form:select id="roles" name="User Type">
+    				<option value="Customer">Customer</option>
+    				<option value="Delivery Guy">Delivery Guy</option>
+  				</form:select>
+                    <form:errors path="roles"></form:errors>
+                </div>
+            </spring:bind>
             <spring:bind path="password">
                 <div class="form-group ${status.error ? 'has-error' : ''}">
                     <form:input type="password" path="password" class="form-control" placeholder="Password"></form:input>
