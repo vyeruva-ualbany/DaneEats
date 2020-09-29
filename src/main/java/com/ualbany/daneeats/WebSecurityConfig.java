@@ -30,7 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers("/resources/**", "/register","/verify-email","/Customer-login","/Delivery-login","/customer.png","/delivery.jpeg","/image2.jpg","/intro.jsp","/starbucks.jpg","/cart.html","/mcd.png","/pizza.png","/bk.png","/dunkin.png","/order.jsp","/CustomerProfile.jsp","/home.html","/dane.jpg","/ViewOrders.jsp","/DeliveryProfile.jsp","/home.jsp").permitAll()
+                .antMatchers("/resources/**", "/register","/verify-email","/Customer-login","/Delivery-login","/customer.png","/delivery.jpeg","/image2.jpg","/intro.jsp","/starbucks.jpg","/cart.html","/mcd.png","/pizza.png","/bk.png","/dunkin.png","/order.jsp","/CustomerProfile.jsp","/home.html","/dane.jpg","/ViewOrders.jsp","/DeliveryProfile.jsp","/home.jsp","/changePassC.jsp","/changePassD.jsp").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 

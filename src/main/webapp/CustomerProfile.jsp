@@ -207,14 +207,14 @@ header {
       <a href="#">Orders</a>
       <a href="#">Addresses</a>
       <a href="#">Payments</a>
-      <a href="home.html">Logout</a>
+      <a href="home.jsp">Logout</a>
     </div>
   </div> 
 </div>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="#">Update Information</a>
-  <a href="#">Change Password</a>
+  <a href="changePassC.jsp">Change Password</a>
   <a href="#">Unsubscribe</a>
 </div>
 
