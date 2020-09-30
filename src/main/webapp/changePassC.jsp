@@ -77,45 +77,7 @@ header {
   font-size: 35px;
   color: white;
 }
-.flip-card {
-  background-color: transparent;
-  width: 300px;
-  height: 300px;
-  perspective: 1000px;
-}
 
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-}
-
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
-
-.flip-card-front, .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-
-.flip-card-front {
-  background-color: #bbb;
-  color: black;
-}
-
-.flip-card-back {
-  background-color: #2980b9;
-  color: white;
-  transform: rotateY(180deg);
-}
 .sidenav {
   height: 100%;
   width: 0;
@@ -165,18 +127,19 @@ header {
     justify-content: center;
     flex-direction: column;
     height: 100%;
-    background-color: green;
+    background-color: $green;
   background-image:url(image2.jpg);
   background-repeat: repeat;
   font-family: "Montserrat", sans-serif;
   text-align: center;
   animation: marquee 30s infinite linear;
-}
+
 code {
     padding: 4px;
     background-color: #333;
     border-radius: 5px;
   }
+}
 
 @keyframes marquee {
   0% {
@@ -187,6 +150,36 @@ code {
     background-position: -1190px;
   }
 }
+input[type=password]{
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 10%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.division {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
 </style>
 </head>
 <body>
@@ -195,54 +188,47 @@ code {
   <p style="color:#9932CC";>A balanced diet is a cookie in each hand 😬</p>
 </div></header>
 <div class="navbar">
-  <a href="ViewOrders.jsp">Home</a>
-  <a href="#news">Help</a>
+  <a href="intro.jsp">Home</a>
+  <a href="order.jsp">Order</a>
+  <a href="#news">Support</a>
   <div class="dropdown">
     <button class="dropbtn">About 
       <i class="fa fa-caret-down"></i>
     </button>
-        <div class="dropdown-content">
-        <a href="DeliveryProfile.jsp">Profile</a>
-        <a href="#">Payments</a>
-        <a href="home.jsp">Logout</a>
-        </div>
-   </div>
-    <div class="dropdown">
-    <button class="dropbtn">Orders 
-      <i class="fa fa-caret-down"></i>
-    </button>
     <div class="dropdown-content">
-      <a href="#">Current Orders</a>
-      <a href="#">Previous Orders</a>
+      <a href="CustomerProfile.jsp">Profile</a>
+      <a href="#">Orders</a>
+      <a href="#">Addresses</a>
+      <a href="#">Payments</a>
+      <a href="home.jsp">Logout</a>
     </div>
   </div> 
-</div><br><br>
+</div>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="#">Update Information</a>
-  <a href="changePassD.jsp">Change Password</a>
+  <a href="changePassC.jsp">Change Password</a>
   <a href="#">Unsubscribe</a>
 </div>
 
 <div id="main">
   <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
 </div>
-<center><h1>Profile Information</h1>
-
-<br><br><br>
 <center>
+<br><br><br><center>
+<div id="division">
+  <form action="#">
+    <label for="pwd1">Enter Old Password</label>
+    <input type="password" id="pwd1" name="pwd1"><br><br><br>
 
-<div class="flip-card">
-  <div class="flip-card-inner">
-    <div class="flip-card-front">
-      <img src="dane.jpg" alt="Avatar" style="width:300px;height:300px;">
-    </div>
-    <div class="flip-card-back">
-      <h1>Great Dane</h1> 
-      <p>Mascot</p> 
-      <p>Brave and Humble</p>
-    </div>
-  </div>
+    <label for="pwd2">Enter New Password</label>
+    <input type="password" id="pwd2" name="pwd2"><br><br><br>
+
+    <label for="pwd3">Confirm Password&nbsp &nbsp</label>
+    <input type="password" id="pwd3" name="pwd3"><br><br><br>
+  
+    <input type="submit" value="Update">
+  </form>
 </div>
 <script>
 function openNav() {
