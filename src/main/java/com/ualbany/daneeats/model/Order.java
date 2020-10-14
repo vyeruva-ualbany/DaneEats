@@ -6,9 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity(name = "Order")
 @Table(name = "Orders")
@@ -21,6 +21,8 @@ public class Order {
     private Integer customerId;
 
     private Integer agentId;
+    
+    private Integer menuId;
 
     private Integer status;
 
@@ -32,8 +34,18 @@ public class Order {
 
     private String destination;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date orderedDate;
+    private Date created;
+	private Date updated;
+	
+    @PrePersist
+    protected void onCreate() {
+      setCreated(new Date());
+    }
+	
+	@PreUpdate
+	protected void onUpdate() {
+	  setUpdated(new Date());
+	}
 
     public Integer getId(){
         return Id;
@@ -95,11 +107,27 @@ public class Order {
         this.source = destination;
     }
     
-    public Date getOrderedDate(){
-        return orderedDate;
-    }
-    
-    public void setOrderedDate(Date orderedDate){
-        this.orderedDate = orderedDate;
-    }
+	public Integer getMenuId() {
+		return menuId;
+	}
+
+	public void setMenuId(Integer menuId) {
+		this.menuId = menuId;
+	}
+
+	public Date getCreated() {
+		return created;
+	}
+
+	public void setCreated(Date created) {
+		this.created = created;
+	}
+
+	public Date getUpdated() {
+		return updated;
+	}
+
+	public void setUpdated(Date updated) {
+		this.updated = updated;
+	}
 }

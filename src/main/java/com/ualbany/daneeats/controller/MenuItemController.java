@@ -1,8 +1,12 @@
 package com.ualbany.daneeats.controller;
 
 import com.ualbany.daneeats.model.MenuItem;
-import com.ualbany.daneeats.repository.MenuItemRepository;
+import com.ualbany.daneeats.service.MenuItemService;
 
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class MenuItemController {
 
     @Autowired 
-    private MenuItemRepository menuItemRepository;
+    private MenuItemService service;
 
     @PostMapping(path="/add") 
      public @ResponseBody String addNewItem (@RequestParam String name
@@ -28,17 +32,40 @@ public class MenuItemController {
     item.setPrice(price);
     item.setCalories(calories);
     item.setDescription(description);
-    menuItemRepository.save(item);
+    service.save(item);
     return "Saved";
   }
 
   @GetMapping(path="/all")
-  public @ResponseBody Iterable<MenuItem> getAllItems() {
-    return menuItemRepository.findAll();
+  public @ResponseBody String getAllItems() {
+
+		List<MenuItem> menuItems = service.findAll();
+		JSONArray jsonArray = new JSONArray();
+
+		for (MenuItem item : menuItems)
+		{
+			JSONObject jsonObject = new JSONObject();
+			jsonObject.put("id", item.getId());
+			jsonObject.put("name", item.getName());
+			jsonObject.put("price", item.getPrice());
+			jsonObject.put("calories", item.getCalories());
+			jsonObject.put("description", item.getDescription());
+			jsonObject.put("restaurant", item.getRestaurantId());
+			jsonArray.put(jsonObject);
+		}
+		return jsonArray.toString();
   }
 
   @GetMapping(path="/name")
-  public @ResponseBody MenuItem getByName(@RequestParam String name) {
-    return menuItemRepository.findByName(name);
+  public @ResponseBody String getByName(@RequestParam String name) {
+	  MenuItem item = service.findByName(name);
+	  JSONObject jsonObject = new JSONObject();
+	  jsonObject.put("id", item.getId());
+	  jsonObject.put("name", item.getName());
+	  jsonObject.put("price", item.getPrice());
+	  jsonObject.put("calories", item.getCalories());
+	  jsonObject.put("description", item.getDescription());
+	  jsonObject.put("restaurant", item.getRestaurantId());
+    return jsonObject.toString();
   }
 }
