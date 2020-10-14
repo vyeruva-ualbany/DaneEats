@@ -222,18 +222,24 @@ input[type=submit]:hover {
 <center>
 <br><br><br><center>
 <div id="division">
-  <form action="#">
-    <label for="pwd1">Enter Old Password</label>
-    <input type="password" id="pwd1" name="pwd1"><br><br><br>
+  <form method="POST" action="${contextPath}/change" class="form-signin">
+        <h2 class="form-heading">change password</h2>
 
-    <label for="pwd2">Enter New Password</label>
-    <input type="password" id="pwd2" name="pwd2"><br><br><br>
+        <div class="form-group ${error != null ? 'has-error' : ''}">
+            <span>${message}</span>
+            <label for="pwd1">Enter Old Password</label>
+            <input type="password" id="pwd1" name="pwd1"><br><br><br>
+    		<label for="pwd2">Enter New Password</label>
+   			 <input type="password" id="pwd2" name="pwd2"><br><br><br>
+            <label for="pwd3">confirm New Password</label>
+   			 <input type="password" id="pwd3" name="pwd3"><br><br><br>
+            <span>${error}</span>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-    <label for="pwd3">Confirm Password&nbsp &nbsp</label>
-    <input type="password" id="pwd3" name="pwd3"><br><br><br>
-  
-    <input type="submit" value="Update">
-  </form>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
+           
+        </div>
+      </form>
 </div>
 <script>
 function openNav() {

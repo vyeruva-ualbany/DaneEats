@@ -169,35 +169,35 @@ footer {
     <td><center>10:00 AM - 8:00 PM</td>
     <td><center><h2>****</h2></td>
     <td><center>15-20 mins</td>
-    <td><center><form action="cart.html"><input type="submit" value="order"></form></td>
+    <td><center><form action="index.html"><input type="submit" value="order"></form></td>
     </tr>
     <tr>
     <td><center><img src="mcd.png" height=100 width=100></center></td>
     <td><center>10:00 AM - 11:00 PM</td>
     <td><center><h2>***</h2></td>
     <td><center>25-30 mins</td>
-    <td><center><form action="cart.html"><input type="submit" value="order"></form></td>
+    <td><center><form action="index.html"><input type="submit" value="order"></form></td>
     </tr>
     <tr>
     <td><center><img src="pizza.png" height=100 width=100></center></td>
     <td><center>11:00 AM - 7:00 PM</td>
     <td><center><h2>*****</h2></td>
     <td><center>10-15 mins</td>
-    <td><center><form action="cart.html"><input type="submit" value="order"></form></td>
+    <td><center><form action="index.html"><input type="submit" value="order"></form></td>
     </tr>
     <tr>
     <td><center><img src="bk.png" height=100 width=100></center></td>
     <td><center>10:00 AM - 10:00 PM</td>
     <td><center><h2>**</h2></td>
     <td><center>30-40 mins</td>
-    <td><center><form action="cart.html"><input type="submit" value="order"></form></td>
+    <td><center><form action="index.html"><input type="submit" value="order"></form></td>
     </tr>
     <tr>
     <td><center><img src="dunkin.png" height=100 width=100></center></td>
     <td><center>8:00 AM - 8:00 PM</td>
     <td><center><h2>***</h2></td>
     <td><center>15-20 mins</td>
-    <td><center><form action="cart.html"><input type="submit" value="order"></form></td>
+    <td><center><form action="index.html"><input type="submit" value="order"></form></td>
     </tr>
     </table>
     </center>
