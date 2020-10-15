@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>springboot-Login</name>
+	<name>SpringBootJQueryAjaxClient</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -27,7 +27,7 @@
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>1600997451868</id>
+			<id>1602735052816</id>
 			<name></name>
 			<type>30</type>
 			<matcher>

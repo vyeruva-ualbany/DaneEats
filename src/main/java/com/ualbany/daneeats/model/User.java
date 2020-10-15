@@ -16,7 +16,6 @@ public class User {
     
     private String password;
     
-    
 	private String email;
 	
 	private Boolean isActive;
@@ -39,8 +38,6 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-
 
     @Transient//this field will not be saved in the database.
     private String passwordConfirm;

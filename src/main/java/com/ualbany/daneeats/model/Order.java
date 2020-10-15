@@ -26,9 +26,9 @@ public class Order {
 
     private Integer status;
 
-    private Double receive;
+    private Double amount;
 
-    private Double pay;
+    private Double quantity;
 
     private String source;
 
@@ -75,22 +75,6 @@ public class Order {
         this.status = status;
     }
 
-    public Double getReceive(){
-        return receive;
-    }
-
-    public void setReceive(Double receive){
-        this.receive = receive;
-    }
-
-    public Double getPay(){
-        return pay;
-    }
-
-    public void setPay(Double pay){
-        this.pay = pay;
-    }
-
     public String getSource(){
         return source;
     }
@@ -104,7 +88,7 @@ public class Order {
     }
 
     public void setDestination(String destination){
-        this.source = destination;
+        this.destination = destination;
     }
     
 	public Integer getMenuId() {
@@ -129,5 +113,21 @@ public class Order {
 
 	public void setUpdated(Date updated) {
 		this.updated = updated;
+	}
+
+	public Double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(Double amount) {
+		this.amount = amount;
+	}
+
+	public Double getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Double quantity) {
+		this.quantity = quantity;
 	}
 }

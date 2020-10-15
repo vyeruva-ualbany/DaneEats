@@ -18,13 +18,13 @@ import java.util.List;
 public class VerificationTokenService {
     private UserRepository userRepository;
     private VerificationTokenRepository verificationTokenRepository;
-    private SendingMailService sendingMailService;
+    //private SendingMailService sendingMailService;
 
     @Autowired
-    public VerificationTokenService(UserRepository userRepository, VerificationTokenRepository verificationTokenRepository, SendingMailService sendingMailService){
+    public VerificationTokenService(UserRepository userRepository, VerificationTokenRepository verificationTokenRepository/*, SendingMailService sendingMailService*/){
         this.userRepository = userRepository;
         this.verificationTokenRepository = verificationTokenRepository;
-        this.sendingMailService = sendingMailService;
+        //this.sendingMailService = sendingMailService;
     }
 
     public void createVerification(String email){
@@ -48,7 +48,7 @@ public class VerificationTokenService {
             verificationToken = verificationTokens.get(0);
         }
 
-        sendingMailService.sendVerificationMail(email, verificationToken.getToken());
+        //sendingMailService.sendVerificationMail(email, verificationToken.getToken());
     }
 
     public ResponseEntity<String> verifyEmail(String token){
