@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ualbany.daneeats.message.Response;
 
 @RestController
-@RequestMapping("/api/customer")
+@RequestMapping("/api")
 public class RestWebController {
 
 	@GetMapping(value = "/all")
@@ -18,7 +18,7 @@ public class RestWebController {
 		return response;
 	}
 
-	@PostMapping(value = "/save")
+	@PostMapping(value = "/customer/save")
 	public Response postCustomer(@RequestBody String customer) {
 		//cust.add(customer);
 		

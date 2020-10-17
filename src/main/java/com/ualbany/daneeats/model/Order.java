@@ -1,120 +1,37 @@
 package com.ualbany.daneeats.model;
 
-import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 
 @Entity(name = "Order")
 @Table(name = "Orders")
-public class Order {
+public class Order extends Persistable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer Id;
+    private User customer;
 
-    private Integer customerId;
-
-    private Integer agentId;
+    private User agent;
     
-    private Integer menuId;
+    private OrderStatus status;
 
-    private Integer status;
-
-    private Double amount;
-
-    private Double quantity;
+    private double amount;
 
     private String source;
 
     private String destination;
-
-    private Date created;
-	private Date updated;
 	
-    @PrePersist
-    protected void onCreate() {
-      setCreated(new Date());
-    }
-	
-	@PreUpdate
-	protected void onUpdate() {
-	  setUpdated(new Date());
-	}
-
-    public Integer getId(){
-        return Id;
-    }
-
-    public Integer getCustomerId(){
-        return customerId;
-    }
-
-    public void setCustomerId(Integer customerId){
-        this.customerId = customerId;
-    }
+    private Set<OrderItem> items;
     
-    public Integer getAgentId(){
-        return agentId;
-    }
-
-    public void setAgentId(Integer agentId){
-        this.agentId = agentId;
-    }
-
-    public Integer getStatus(){
-        return status;
-    }
-
-    public void setStatus(Integer status){
-        this.status = status;
-    }
-
-    public String getSource(){
-        return source;
-    }
-
-    public void setSource(String source){
-        this.source = source;
-    }
-
-    public String getDestination(){
-        return destination;
-    }
-
-    public void setDestination(String destination){
-        this.destination = destination;
-    }
-    
-	public Integer getMenuId() {
-		return menuId;
-	}
-
-	public void setMenuId(Integer menuId) {
-		this.menuId = menuId;
-	}
-
-	public Date getCreated() {
-		return created;
-	}
-
-	public void setCreated(Date created) {
-		this.created = created;
-	}
-
-	public Date getUpdated() {
-		return updated;
-	}
-
-	public void setUpdated(Date updated) {
-		this.updated = updated;
-	}
-
 	public Double getAmount() {
 		return amount;
 	}
@@ -123,11 +40,59 @@ public class Order {
 		this.amount = amount;
 	}
 
-	public Double getQuantity() {
-		return quantity;
+	@ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "customerId", nullable = false, updatable = false)
+	public User getCustomer() {
+		return customer;
 	}
 
-	public void setQuantity(Double quantity) {
-		this.quantity = quantity;
+	public void setCustomer(User customer) {
+		this.customer = customer;
+	}
+
+	@ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "agentId")
+	public User getAgent() {
+		return agent;
+	}
+
+	public void setAgent(User agent) {
+		this.agent = agent;
+	}
+
+	@Column(name = "orderStatus")
+    @Enumerated(EnumType.STRING)
+	public OrderStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(OrderStatus status) {
+		this.status = status;
+	}
+
+	public String getSource() {
+		return source;
+	}
+
+	public void setSource(String source) {
+		this.source = source;
+	}
+
+	public String getDestination() {
+		return destination;
+	}
+
+	public void setDestination(String destination) {
+		this.destination = destination;
+	}
+	
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="orderId")
+	public Set<OrderItem> getItems() {
+		return items;
+	}
+	
+	public void setItems(Set<OrderItem> items) {
+		this.items = items;
 	}
 }

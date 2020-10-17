@@ -7,6 +7,6 @@ import com.ualbany.daneeats.model.User;
 public interface UserService {
     void save(User user);
 
-    User findByUsername(String username);
+    User findByUserName(String username);
     List<User> findByEmail(String email);
 }

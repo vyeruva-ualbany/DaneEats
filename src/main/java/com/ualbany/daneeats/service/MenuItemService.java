@@ -3,12 +3,11 @@ package com.ualbany.daneeats.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.ualbany.daneeats.model.CustomerCartItem;
-import com.ualbany.daneeats.model.MenuItem;
-import com.ualbany.daneeats.repository.MenuItemRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.ualbany.daneeats.model.MenuItem;
+import com.ualbany.daneeats.repository.MenuItemRepository;
 
 @Service
 public class MenuItemService {

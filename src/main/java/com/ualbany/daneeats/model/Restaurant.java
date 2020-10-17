@@ -1,12 +1,11 @@
 package com.ualbany.daneeats.model;
 
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
-public class Restaurant {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer Id;
+public class Restaurant extends Persistable {
 
     private String name;
 
@@ -15,10 +14,6 @@ public class Restaurant {
     private String address1;
 
     private String address2;
-
-    public Integer getId(){
-        return Id;
-    }
 
     public String getName(){
         return name;
@@ -51,5 +46,9 @@ public class Restaurant {
     public void setAddress2(String address2){
         this.address2 = address2;
     }
+    
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="restaurantId")
+    private Set<MenuItem> menuItems;
 
 }

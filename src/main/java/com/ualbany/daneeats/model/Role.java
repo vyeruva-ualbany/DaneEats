@@ -1,41 +1,31 @@
 package com.ualbany.daneeats.model;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
-@Table(name = "Rolesindb")
-public class Role {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@Table(name = "UserRoles")
+public class Role extends Persistable {
 
-    private String name;
+    private User user;
 
-    @ManyToMany(mappedBy = "roles")
-    private Set<User> users;
+    private UserRoleType roleType;
 
-    public Long getId() {
-        return id;
-    }
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "userId")
+	public User getUser() {
+		return user;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setUser(User user) {
+		this.user = user;
+	}
 
-    public String getName() {
-        return name;
-    }
+	@Enumerated(EnumType.STRING)
+	public UserRoleType getRoleType() {
+		return roleType;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Set<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Set<User> users) {
-        this.users = users;
-    }
+	public void setRoleType(UserRoleType roleType) {
+		this.roleType = roleType;
+	}
 }

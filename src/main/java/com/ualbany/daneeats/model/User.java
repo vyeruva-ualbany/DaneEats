@@ -5,69 +5,46 @@ import javax.persistence.*;
 
 import java.util.Set;
 
-@Entity
-@Table(name = "Usersindb")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@Entity(name = "User")
+@Table(uniqueConstraints = { @UniqueConstraint(columnNames = {"email", "userName"}) })
+public class User extends Persistable {
 
-    private String username;
-    
-    private String password;
-    
+	private String userName;
 	private String email;
-	
-	private Boolean isActive;
-	
-	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+	private String password;
     private VerificationToken verificationToken;
 	
-    public Boolean getIsActive() {
-		return isActive;
+    @Transient//this field will not be saved in the database.
+    private String passwordConfirm;
+
+    private Set<Role> roles;
+
+    @Column(nullable = false)
+	public String getUserName() {
+		return this.userName;
 	}
 
-	public void setIsActive(Boolean isActive) {
-		this.isActive = isActive;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
+	@Column(name = "email", unique = true, nullable = false)
 	public String getEmail() {
-		return email;
+		return this.email;
 	}
 
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-    @Transient//this field will not be saved in the database.
-    private String passwordConfirm;
+	@Column(name = "password")
+	public String getPassword() {
+		return this.password;
+	}
 
-    @ManyToMany
-    private Set<Role> roles;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
     public String getPasswordConfirm() {
         return passwordConfirm;
@@ -77,6 +54,8 @@ public class User {
         this.passwordConfirm = passwordConfirm;
     }
 
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="userId")
     public Set<Role> getRoles() {
         return roles;
     }
@@ -84,6 +63,9 @@ public class User {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+    
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="userId")
     public VerificationToken getVerificationToken() {
         return verificationToken;
     }

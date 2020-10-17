@@ -1,16 +1,12 @@
 package com.ualbany.daneeats.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class MenuItem {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer Id;
+public class MenuItem extends Persistable {
 
     private String name;
 
@@ -20,11 +16,7 @@ public class MenuItem {
 
     private String description;
 
-    private Integer restaurantId;
-
-    public Integer getId(){
-        return Id;
-    }
+    private Restaurant restaurant;
 
     public String getName(){
         return name;
@@ -58,11 +50,13 @@ public class MenuItem {
         this.description = description;
     }
 
-    public Integer getRestaurantId(){
-        return restaurantId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "restaurantId")
+    public Restaurant getRestaurant(){
+        return restaurant;
     }
 
-    public void setRestaurantId(Integer restaurantId){
-        this.restaurantId = restaurantId;
+    public void setRestaurant(Restaurant restaurant){
+        this.restaurant = restaurant;
     }
 }
