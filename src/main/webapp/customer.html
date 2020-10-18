@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"
+        />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/css/style.css" />
+        <link rel="icon" href="/img/icon.png" />
+        <script src="/js/jquery.min.js"></script>
+        <title>Food Delivery Landing Page</title>
+    </head>
+    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white"> <a class="navbar-brand" href="/index.html"><img src="/img/logo.png"/></a>
+        <button
+        class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+        aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"> <a class="nav-link" href="/">Welcome</a>
+                </li>
+                <li class="nav-item active"> <a class="nav-link" href="/customer">Customer<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item"> <a class="nav-link" href="/menu">Menu</a>
+                </li>
+                <li class="nav-item"> <a class="nav-link" href="/login">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <body>
+        <div class="block hero1 my-auto" style="background-image:url(/img/customer_banner.jpg);">
+            <div class="container-fluid text-center">
+                 <h1 class="display-2 text-white" data-aos="fade-up" data-aos-duration="1000"
+                data-aos-offset="0">UAlbany Campus Restaurants</h1>
+                <p class="lead text-white" data-aos="fade-up" data-aos-duration="1000"
+                data-aos-delay="600">Browse a restaurants and place your order</p>
+                <a
+                href="#menu" class="btn-text lead d-inline-block text-white border-top border-bottom mt-4 pt-1 pb-1"
+                data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1200">View Restaurants</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="maincontent">
+            <div class="container">
+                <section id="menu">
+                    <div class="block menu1">
+                        <!-- Start Pizza Menu -->
+                        <div class="menu menu--is-visible" id="pizzaMenu" data-aos="fade-up">
+                            <div class="item row align-items-center">
+                                <div class="col-sm-3 pr-5">
+                                    <img class="product-img" src="/img/babas.jpg"/>
+                                </div>
+                                <div class="details col-sm-9">
+                                    <div class="item__header">
+                                        <h3 class="item__title">Babba's Pizza <br/>
+                                        <span class="item__description">Campus Center</span></h3>
+                                    </div>
+                                    <p class="item__description">New York style pizzeria using world famous Grande 
+                                    cheese and decades old recipes from Baba.</p>
+                                    <a href="/menu"><button class="btn btn-sm btn-outline-primary my-cart-btn">Menu</button></a> 
+                                </div>
+                            </div>
+                            <div class="item row align-items-center">
+                                <div class="col-sm-3 pr-5">
+                                    <img class="product-img" src="/img/Damiens.jpg"/>
+                                </div>
+                                <div class="details col-sm-9">
+                                    <div class="item__header">
+                                        <h3 class="item__title">Damien's<br/>
+                                        <span class="item__description">Campus Center</span></h3>
+                                    </div>
+                                    <p class="item__description">Damien's WOW Cafe features hearty café burgers, wings, tenders, 
+                                    sandwiches, wraps, salads and signature sauces and desserts</p>
+                                    <a href="/menu"><button class="btn btn-sm btn-outline-primary my-cart-btn">Menu</button></a> 
+                                </div>
+                            </div>
+                            <div class="item row align-items-center">
+                                <div class="col-sm-3 pr-5">
+                                    <img class="product-img" src="/img/FG.png"/>
+                                </div>
+                                <div class="details col-sm-9">
+                                    <div class="item__header">
+                                        <h3 class="item__title">Fountain Grill<br/>
+                                        <span class="item__description">Campus Center, East Addition</span></h3>
+                                    </div>
+                                    <p class="item__description">Fountain Grill is a campus favorite featuring grilled burgers, 
+                                    chicken sandwiches, along with your favorite sides and Ronnybrook Farms local and sustainable 
+                                    milkshakes. Join us for brunch on Saturday and Sunday and enjoy pancakes, eggs and sides.</p>
+                                    <a href="/menu"><button class="btn btn-sm btn-outline-primary my-cart-btn">Menu</button></a> 
+                                </div>
+                            </div>
+                            <div class="item row align-items-center">
+                                <div class="col-sm-3 pr-5">
+                                    <img class="product-img" src="/img/umaisushi.jpg"/>
+                                </div>
+                                <div class="details col-sm-9">
+                                    <div class="item__header">
+                                        <h3 class="item__title">Umai Sushi<br/>
+                                        <span class="item__description">Campus Center</span></h3>
+                                    </div>
+                                    <p class="item__description">Umai Sushi features freshly made sushi in traditional and bold 
+                                    flavor combinations including options for vegetarians and vegans.</p>
+                                    <a href="/menu"><button class="btn btn-sm btn-outline-primary my-cart-btn">Menu</button></a> 
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Pizza Menu -->
+                    </div>
+                    <!-- End block -->
+                </section>
+            </div>
+        </div>
+        <footer class="block footer1 footer text-center">
+            <p>&copy; <a href="https://bootstrapstarter.com/bootstrap-templates/template-fooddelivery-bootstrap-html/">"Food Delivery HTML Template"</a> by
+                WowThemes.net</p>
+        </footer>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
+        <script src="js/custom-general.js"></script>
+    </body>
+
+</html>
