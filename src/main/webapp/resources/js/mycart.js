@@ -13,7 +13,7 @@
       classCartIcon: 'my-cart-icon',
       classCartBadge: 'my-cart-badge',
       affixCartIcon: true,
-      checkoutCart: function(products) { },
+      checkoutCart: function(products, destination) { },
       clickOnAddToCart: function($addTocart) { },
       getDiscountPrice: function(products) { return null; }
     };
@@ -39,6 +39,7 @@
     PRIVATE
     */
     localStorage.products = localStorage.products ? localStorage.products : "";
+    localStorage.destination = localStorage.destination ? localStorage.destination : "";
     var getIndexOfProduct = function(id){
       var productIndex = -1;
       var products = getAllProducts();
@@ -49,6 +50,15 @@
         }
       });
       return productIndex;
+    }
+    var setAllProducts = function(products){
+      localStorage.products = JSON.stringify(products);
+    }
+    var setDestination = function(destination){
+      localStorage.destination = JSON.stringify(destination);
+    }
+    var getDestination = function(){
+      return localStorage.destination;
     }
     var setAllProducts = function(products){
       localStorage.products = JSON.stringify(products);
@@ -141,6 +151,8 @@
     objToReturn.clearProduct = clearProduct;
     objToReturn.removeProduct = removeProduct;
     objToReturn.getTotalQuantityOfProduct = getTotalQuantityOfProduct;
+    objToReturn.setDestination = setDestination;
+    objToReturn.getDestination = getDestination;
     return objToReturn;
   }());
 
@@ -161,6 +173,7 @@
     var idEmptyCartMessage = 'my-cart-empty-message';
     var classAffixMyCartIcon = 'my-cart-icon-affix';
     var idDiscountPrice = 'my-cart-discount-price';
+    var classDestination = 'my-cart-destination';
 
     $cartBadge.text(ProductManager.getTotalQuantityOfProduct());
 
@@ -231,6 +244,16 @@
         );
       }
 
+	  var destination="";
+  	  $cartTable.append(
+          '<tr>' +
+          '<td></td>' +
+          '<td><strong>Destination</strong></td>'+ 
+          '<td></td>' +
+          '<td title="Destination"><input type="text" style="width: 150px;" class="' + classDestination + '" value=' + destination + '/></td>' +
+          '<td></td>' +
+          '</tr>'
+        );
       showGrandTotal(products);
       showDiscountPrice(products);
     }
@@ -296,6 +319,11 @@
       });
     });
 
+	$(document).on("input", "." + classDestination, function () {
+      var destination = $(this).val();
+      ProductManager.setDestination(destination);
+    });
+    
     $("#" + idCheckoutCart).click(function(){
       var products = ProductManager.getAllProducts();
       if(!products.length) {
@@ -303,7 +331,7 @@
         return ;
       }
       updateCart();
-      options.checkoutCart(ProductManager.getAllProducts());
+      options.checkoutCart(ProductManager.getAllProducts(), ProductManager.getDestination());
       ProductManager.clearProduct();
       $cartBadge.text(ProductManager.getTotalQuantityOfProduct());
       $("#" + idCartModal).modal("hide");

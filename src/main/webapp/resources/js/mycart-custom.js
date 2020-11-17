@@ -98,7 +98,7 @@ $(function () {
     classCartIcon: 'my-cart-icon',
     classCartBadge: 'my-cart-badge',
     affixCartIcon: true,
-    checkoutCart: function(products) {
+    checkoutCart: function(products, destination) {
       let items = [];
       let total = 0;
       $.each(products, function(){
@@ -112,7 +112,7 @@ $(function () {
       let order = {};
       order["customerId"] = 1;
       order["amount"] = total;
-      order["destination"] = "Duch Quad";
+      order["destination"] = destination;
       order["items"] = items;
       saveOrder(order);
     },
