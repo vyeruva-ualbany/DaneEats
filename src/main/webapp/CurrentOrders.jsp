@@ -10,7 +10,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 body {
-    background: url("ualbny.jpg") no-repeat center center fixed;
+    background: url(https://livewallpaperhd.com/wp-content/uploads/2020/09/Wallpaper-HD-Food.jpg) no-repeat center center fixed;
     background-size: cover
 	}
 .topnav {
@@ -193,10 +193,10 @@ input[type=submit] {
 		 var id = button.parentElement.parentElement.firstElementChild.innerHTML;
 		 var status = button.parentElement.previousElementSibling.innerHTML;
 
-		 let requestURL = "/api/delivery/acceptorders";
+		 let requestURL = "/api/delivery/acceptorder";
 		 if(status == "claimed")
 		 {
-			 requestURL = "/api/delivery/acceptorders";
+			 requestURL = "/api/delivery/acceptorder";
 		 }
 		 else if(status == "accepted")
 		 {
@@ -231,7 +231,7 @@ input[type=submit] {
 		 let order = {};
 		 order["id"] = id;
 		 order["agentId"] = 1;//userId;
-		 let requestURL = "/api/delivery/declineorders";
+		 let requestURL = "/api/delivery/declineorder";
 		 let request = new XMLHttpRequest();
 		 request.open('POST', requestURL); 
 		 request.setRequestHeader("Content-type", "application/json;charset=UTF-8");

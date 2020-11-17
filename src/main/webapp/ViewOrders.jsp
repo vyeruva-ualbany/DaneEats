@@ -194,7 +194,7 @@ input[type=submit] {
 			 let order = {};
 			 order["id"] = id;
 			 order["agentId"] = 1;//userId;
-			 let requestURL = "/api/delivery/claimorders";
+			 let requestURL = "/api/delivery/claimorder";
 			 let request = new XMLHttpRequest();
 			 request.open('POST', requestURL); 
 			 request.setRequestHeader("Content-type", "application/json;charset=UTF-8");

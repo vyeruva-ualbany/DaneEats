@@ -127,7 +127,7 @@ public class RestWebController {
 		return response;
 	}
 
-	@PostMapping("/delivery/claimorders")
+	@PostMapping("/delivery/claimorder")
 	public Response claimOrder(@RequestBody String order) {
 		JSONObject jsonOrder = new JSONObject(order.toString());
 		Long id = jsonOrder.getLong("id");
