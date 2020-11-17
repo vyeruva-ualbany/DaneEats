@@ -31,7 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers("/resources/**", "/register","/verify-email","/Customer-login","/customer","/Delivery-login","*/customer.png","*/delivery.jpeg",
+                .antMatchers("/resources/**", "/register","/verify-email","/Customer-login","/customer","/profile","/Delivery-login","*/customer.png","*/delivery.jpeg",
                 		"img/image2.jpg","/intro.jsp","img/starbucks.jpg","/cart.html","img/mcd.png","img/pizza.png","img/bk.png","img/dunkin.png","/order.jsp",
                 		"/CustomerProfile.jsp","/home","img/dane.jpg","img/ualbany.jpg","/ViewOrders.jsp","/DeliveryProfile.jsp","/home.jsp","/changePassC.jsp",
                 		"/changePassD.jsp","/Action.jsp","/Action.jsp/*","/index.html","img/pizza-1.png","img/pizza-2.png","img/pizza-3.png","img/pizza-4.png","img/screenshot.jpg",
@@ -39,8 +39,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 		"img/restaurant.png","img/restaurant.png","img/customer_banner.jpg","img/babas.jpg","img/fg.png","/css/style.css","/css/bootstrap.min.css",
                 		"img/damiens.jpg", "img/damiens.jpg","img/umaisushi.jpg", "img/customer_banner.jpg","/customer/menu", "/customer/pastorders",
                 		"img/cart.svg","js/jquery.min.js","js/mycart.js","js/mycart-custom.js","custom-general.js","/customer/currentorders","css/style.css",
-                		"/customer/profile", "/customer/placeorder","/menu.html","/customer/save","/previousOrders.jsp","/CurrentOrders.jsp","/PreviousOrdersD.jsp",
-                		"/delivery/currentorders","/delivery/availableorders","/delivery/previousordersd","/ProcessOrder.jsp","/login.jsp","/login","/updateUsername.jsp").permitAll()
+                		"/customer/profile", "/customer/placeorder","/menu.html","/customer/save","/previousOrders.jsp","/CurrentOrders.jsp","/PreviousOrdersD.jsp","/ongoingOrders.jsp",
+                		"/delivery/currentorders","/delivery/claimedorders","/delivery/availableorders","/delivery/previousordersd","/ProcessOrder.jsp","/login.jsp","/login","/updateUsername.jsp").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 

@@ -176,7 +176,7 @@ input[type=submit]:hover {
       <i class="fa fa-caret-down"></i>
     </button>
         <div class="dropdown-content">
-        <a href="DeliveryProfile.jsp">Profile</a>
+        <a href="${contextPath}/profile">Profile</a>
         <a href="#">Payments</a>
         <a href="home.jsp">Logout</a>
         </div>

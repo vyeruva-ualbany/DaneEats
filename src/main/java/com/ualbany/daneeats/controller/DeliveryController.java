@@ -43,15 +43,23 @@ public class DeliveryController {
 		return modelandview1;
     } 
     
+    @GetMapping("/claimedorders")
+    public ModelAndView claimedOrders(Long agentId) {
+       System.out.print("hello");
+       agentId = 1L;
+       ModelAndView modelandview2 =new ModelAndView("CurrentOrders");
+       List<Order> corders=orderservice.findAgentOrdersWithStatus(agentId, OrderStatus.CLAIMED_BY_AGENT);
+       modelandview2.addObject("Corders",corders);
+		return modelandview2;
+    } 
     @GetMapping("/currentorders")
     public ModelAndView currentOrders(Long agentId) {
        System.out.print("hello");
        agentId = 1L;
-       ModelAndView modelandview2 =new ModelAndView("CurrentOrders");
-       List<Order> corders=orderservice.findAgentOrdersWithStatus(agentId, OrderStatus.ACCEPTED_BY_AGENT, 
-    		   OrderStatus.CLAIMED_BY_AGENT, OrderStatus.PICKED_UP);
-       modelandview2.addObject("Corders",corders);
-		return modelandview2;
+       ModelAndView modelandview4 =new ModelAndView("ongoingOrders");
+       List<Order> corders=orderservice.findAgentOrdersWithStatus(agentId, OrderStatus.ACCEPTED_BY_AGENT,OrderStatus.PICKED_UP);
+       modelandview4.addObject("Oorders",corders);
+		return modelandview4;
     } 
     
     @GetMapping("/previousordersd")

@@ -137,9 +137,8 @@ input[type=submit] {
 				About <i class="fa fa-caret-down"></i>
 			</button>
 			<div class="dropdown-content">
-				<a href="${contextPath}/profile">Profile</a>
-				 <a href="#">Payments</a> 
-				 <a href="home.jsp">Logout</a>
+				<a href="${contextPath}/profile">Profile</a> <a href="#">Payments</a> <a
+					href="home.jsp">Logout</a>
 			</div>
 		</div>
 		<div class="dropdown">
@@ -169,8 +168,9 @@ input[type=submit] {
 				<th>Source</th>
 				<th>Destination</th>
 				<th>Status</th>
+				<th>Action</th>
 			</tr>
-			<c:forEach var="order" items="${Corders}">
+			<c:forEach var="order" items="${Oorders}">
 				<tr>
 					<td><c:out value="${order.id}" /></td>
 					<td><c:out value="${order.agent.id}" /></td>
@@ -179,8 +179,8 @@ input[type=submit] {
 					<td><c:out value="${order.destination}" /></td>
 					<td><c:out value="${order.status}" /></td>
 					<td><button id="btn-accept" class="button"
-							onclick="acceptfn(this)">Accept</button> <br />
-						<button id="btn-decline" class="button" onclick="declinefn(this)">Decline</button>
+							onclick="confirm(this)">Confirm Pickup</button> <br />
+						<button id="btn-decline" class="button" onclick="delivery(this)">Confirm Delivery</button>
 					</td>
 				</tr>
 			</c:forEach>
@@ -189,29 +189,15 @@ input[type=submit] {
 	
 	
 	<script>
-	 var acceptfn = function(button)
+	 var confirm = function(button)
 	 {
 		 var id = button.parentElement.parentElement.firstElementChild.innerHTML;
 		 var status = button.parentElement.previousElementSibling.innerHTML;
-
-		 let requestURL = "/api/delivery/acceptorder";
-		 if(status == "claimed")
-		 {
-			 requestURL = "/api/delivery/acceptorder";
-		 }
-		 else if(status == "accepted")
-		 {
-			 requestURL = "/api/delivery/pickuporder";
-		 }
-		 else
-		 {
-		 	 requestURL = "/api/delivery/deliverorder";
-		 }
 		 let order = {};
 		 order["id"] = id;
-		 order["agentId"] = 1;//userId;
+		 order["agentId"] = 1;
 		 let request = new XMLHttpRequest();
-		 request.open('POST', requestURL); 
+		 request.open('POST', "/api/delivery/pickuporder"); 
 		 request.setRequestHeader("Content-type", "application/json;charset=UTF-8");
 	     request.responseType = 'json';
 		 request.send(JSON.stringify(order));
@@ -226,15 +212,15 @@ input[type=submit] {
 		 }	
 	 }
 	 
-	 var declinefn = function(button)
+	 var delivery = function(button)
 	 {
 		 var id =  button.parentElement.parentElement.firstElementChild.innerHTML;
 		 let order = {};
 		 order["id"] = id;
-		 order["agentId"] = 1;//userId;
+		 order["agentId"] = 1;
 		 let requestURL = "/api/delivery/declineorder";
 		 let request = new XMLHttpRequest();
-		 request.open('POST', requestURL); 
+		 request.open('POST', "/api/delivery/deliverorder"); 
 		 request.setRequestHeader("Content-type", "application/json;charset=UTF-8");
 	     request.responseType = 'json';
 		 request.send(JSON.stringify(order));

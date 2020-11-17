@@ -81,7 +81,11 @@ public class UserController {
         return "login";
     }
     
-
+    @GetMapping("/profile")
+    public String profile() {
+    	
+        return "DeliveryProfile";
+    }
     
     
     @PostMapping("/Customer-login")//for both /,welcome this will be called

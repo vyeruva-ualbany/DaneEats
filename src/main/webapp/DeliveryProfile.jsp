@@ -184,7 +184,7 @@ header {
       <i class="fa fa-caret-down"></i>
     </button>
         <div class="dropdown-content">
-        <a href="DeliveryProfile.jsp">Profile</a>
+        <a href="${contextPath}/profile">Profile</a>
         <a href="#">Payments</a>
         <a href="home.jsp">Logout</a>
         </div>
@@ -196,8 +196,9 @@ header {
     <div class="dropdown-content">
       <center>
       <a href="${contextPath}/delivery/availableorders">Available Orders</a>
-   <a href="${contextPath}/delivery/currentorders">Current Orders</a>
-   <a href="${contextPath}/delivery/previousordersd">Previous Orders</a>
+					  <a href="${contextPath}/delivery/claimedorders">Claimed Orders</a>
+					   <a href="${contextPath}/delivery/currentorders">Ongoing Orders</a>
+					   <a href="${contextPath}/delivery/previousordersd">Previous Orders</a>
 </center>
       
     </div>
