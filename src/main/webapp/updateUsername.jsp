@@ -201,7 +201,7 @@ input[type=submit]:hover {
 <div class="container">
  <div class="frame">
 <div id="division">
-  <form method="POST" id="my-form" action="#" onsubmit="return update(this)" class="form-signin">
+  <form method="POST" id="my-form" action="#" onsubmit="update(this)" class="form-signin">
         <h2 class="heading">Change Username</h2>
         <div>
             <label class="heading" for="username">Enter Username</label>

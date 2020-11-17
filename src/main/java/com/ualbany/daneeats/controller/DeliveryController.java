@@ -34,6 +34,17 @@ public class DeliveryController {
         return mv;
     }
     
+    @GetMapping("/allorders")
+    public ModelAndView allorders(Long agentId) {
+       ModelAndView modelandview1 =new ModelAndView("adminOrders");
+       agentId = 1L;
+       List<Order> aorders=orderservice.findByStatus(OrderStatus.NEW);
+       modelandview1.addObject("Corders",aorders);
+       List<Order> aorders1=orderservice.findAgentOrdersWithStatus(agentId,OrderStatus.ACCEPTED_BY_AGENT,OrderStatus.CLAIMED_BY_AGENT,OrderStatus.PICKED_UP);
+       modelandview1.addObject("Corders",aorders1);
+		return modelandview1;
+    } 
+    
     @GetMapping("/availableorders")
     public ModelAndView availableOrders() {
        System.out.print("hello");

@@ -1,9 +1,3 @@
-	<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -101,16 +95,29 @@ html {
   font-family: "Lucida Sans", sans-serif;
 }
 
-
-.aside {
-  background-color: #FC3B3B;
+.header {
+  background-color: #C70039;
+  color: #ffffff;
   padding: 15px;
+}
+
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  padding: 8px;
+  margin-bottom: 7px;
+  background-color: #FC3B3B;
   color: #020000;
-  text-align: center;
-  font-size: 14px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
+.menu li:hover {
+  background-color: #ffffff;
+}
 
 .footer {
   background-color: #020000;
@@ -161,42 +168,23 @@ html {
                 <img src="https://cdn.dribbble.com/users/1365713/screenshots/5381232/foodiction.png" alt="Test" height="53" width="80" />
         </div>
         <a href="#home" class="active">DaneEats</a>
-        <a class ="topnavright" href="${contextPath}/register">SignUp</a>
-        <a class ="topnavright" href="${contextPath}/login">Login</a>
-        <a href="adminHome.jsp" class ="topnavright" href="">Admin</a>
     </div>
-<div class="row">
-  
- <div class="col-3 col-s-12">
-    <div class="aside">
-      <h3>In an instant?</h3>
-      <p class="font-italic">Pizza, coffee, and cheesecake—all in 30 minutes? Done.</p>
-      <h3>Explore?</h3>
-      <p class="font-italic">Making new meaning out of holidays with Sweet & savory snacks.</p>
-      <h3>Recipes We Love</h3>
-      <p class="font-italic">Find all the popular items,<a href="" target="_blank">Here!</a></p>
-    </div>
-  </div>
-  
-   <div class="col-6 col-s-9">
- <div class="container">
- <div class="frame">
-        <h2 style="color:white;">Clean Eating.</h2>
-        <h2 style="color:white;">No Sacrificies.</h2>
-        <p class="lead" style="color:white;">  Food on a campus shouldn't mean canned beans and ramen noodles night after night. Instant delivery any time? You bet, with <a href="" target="_blank">DaneEats</a> food delivery service.</p>
-        <p><a href="" target="_blank" class="btn btn-success btn-lg">Order Now</a></p>
-    </div>
-    </div>
-    </div>
-</div>
+<center>
+	<form method="POST" id="my-form" action="#" class="form-signin">
 
-  
-
-	
-    <div class="footer fixed-bottom">
-    <p>DaneEats@Ualbany</p>
-    </div>
-
-
+        <div class="form-group">
+            <input type="text" id="Name" name="Name" placeholder="Name"><br><br><br>
+    
+   			 <input type="text" id="Phone" name="Phone" placeholder="Phone"><br><br><br>
+          
+   			 <input type="text" id="Address1" name="Address1" placeholder="Calories"><br><br><br>
+        
+            <input type="text" id="Description" name="Description" placeholder="Description"><br><br><br>
+            
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Add MenuItem</button>
+           
+        </div>
+      </form>
+     </center>
 </body>
 </html>

@@ -40,7 +40,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 		"img/damiens.jpg", "img/damiens.jpg","img/umaisushi.jpg", "img/customer_banner.jpg","/customer/menu", "/customer/pastorders",
                 		"img/cart.svg","js/jquery.min.js","js/mycart.js","js/mycart-custom.js","custom-general.js","/customer/currentorders","css/style.css",
                 		"/customer/profile", "/customer/placeorder","/menu.html","/customer/save","/previousOrders.jsp","/CurrentOrders.jsp","/PreviousOrdersD.jsp","/ongoingOrders.jsp",
-                		"/delivery/currentorders","/delivery/claimedorders","/delivery/availableorders","/delivery/previousordersd","/ProcessOrder.jsp","/login.jsp","/login","/updateUsername.jsp").permitAll()
+                		"/delivery/currentorders","/delivery/claimedorders","/delivery/availableorders","/delivery/allorders","/delivery/previousordersd","/ProcessOrder.jsp","/login.jsp","/login","/updateUsername.jsp",
+                		"/adminHome.jsp","/adminUser.jsp","/adminOrders.jsp","/registerbyadmin","/adminRestaurant.jsp","/adminMenu.jsp","/addrestaurant","/updatemenu").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 
@@ -60,6 +61,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers("/api/delivery/declineorder");
         web.ignoring().antMatchers("/api/delivery/pickuporder");
         web.ignoring().antMatchers("/api/delivery/deliverorder");
+        web.ignoring().antMatchers("/api/delivery/cancelorder");
         web.ignoring().antMatchers("/api/user/updatepass");
         web.ignoring().antMatchers("/api/user/updateusername");
     }

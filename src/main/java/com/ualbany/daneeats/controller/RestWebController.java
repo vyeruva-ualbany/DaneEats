@@ -174,6 +174,21 @@ public class RestWebController {
 		Response response = new Response("Done", id);
 		return response;
 	}
+	@PostMapping("/delivery/cancelorder")
+	public Response cancelOrder(@RequestBody String order) {
+		JSONObject jsonOrder = new JSONObject(order.toString());
+		Long id = jsonOrder.getLong("id");
+		Order ord = orderservice.findById(id);
+		Long agentId = jsonOrder.getLong("agentId");
+		User aget = userrepo.findById(agentId).get();
+		ord.setAgent(aget);
+		ord.setUpdatedAt(new Date());
+		ord.setUpdatedBy(aget);
+		ord.setStatus(OrderStatus.CANCELLED);
+		orderservice.save(ord);
+		Response response = new Response("Done", id);
+		return response;
+	}
 	@PostMapping("/user/updatepass")
 	public Response updatePass(@RequestBody String user) {
 		JSONObject jsonUser = new JSONObject(user.toString());

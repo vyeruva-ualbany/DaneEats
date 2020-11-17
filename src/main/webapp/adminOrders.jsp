@@ -1,22 +1,15 @@
-	<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Home page</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-		body {
+body {
     background: url(https://livewallpaperhd.com/wp-content/uploads/2020/09/Wallpaper-HD-Food.jpg) no-repeat center center fixed;
     background-size: cover
 	}
@@ -102,15 +95,29 @@ html {
 }
 
 
-.aside {
-  background-color: #FC3B3B;
+.header {
+  background-color: #C70039;
+  color: #ffffff;
   padding: 15px;
+}
+
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  padding: 8px;
+  margin-bottom: 7px;
+  background-color: #FC3B3B;
   color: #020000;
-  text-align: center;
-  font-size: 14px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
+.menu li:hover {
+  background-color: #ffffff;
+}
 
 .footer {
   background-color: #020000;
@@ -153,50 +160,70 @@ html {
   .col-12 {width: 100%;}
 }
 
+
 </style>
 </head>
 <body>
+	
 	<div class="topnav" id="myTopnav">
         <div class="navbar-logo">
                 <img src="https://cdn.dribbble.com/users/1365713/screenshots/5381232/foodiction.png" alt="Test" height="53" width="80" />
         </div>
         <a href="#home" class="active">DaneEats</a>
-        <a class ="topnavright" href="${contextPath}/register">SignUp</a>
-        <a class ="topnavright" href="${contextPath}/login">Login</a>
-        <a href="adminHome.jsp" class ="topnavright" href="">Admin</a>
     </div>
-<div class="row">
-  
- <div class="col-3 col-s-12">
-    <div class="aside">
-      <h3>In an instant?</h3>
-      <p class="font-italic">Pizza, coffee, and cheesecake—all in 30 minutes? Done.</p>
-      <h3>Explore?</h3>
-      <p class="font-italic">Making new meaning out of holidays with Sweet & savory snacks.</p>
-      <h3>Recipes We Love</h3>
-      <p class="font-italic">Find all the popular items,<a href="" target="_blank">Here!</a></p>
-    </div>
-  </div>
-  
-   <div class="col-6 col-s-9">
- <div class="container">
- <div class="frame">
-        <h2 style="color:white;">Clean Eating.</h2>
-        <h2 style="color:white;">No Sacrificies.</h2>
-        <p class="lead" style="color:white;">  Food on a campus shouldn't mean canned beans and ramen noodles night after night. Instant delivery any time? You bet, with <a href="" target="_blank">DaneEats</a> food delivery service.</p>
-        <p><a href="" target="_blank" class="btn btn-success btn-lg">Order Now</a></p>
-    </div>
-    </div>
-    </div>
+    <div class="header">
 </div>
-
-  
-
+	<h1 align="center" class="heading">ALL ORDERS</h1>
+	<div align="center">
+		<table id="ordertable" border="1" cellpadding="5">
+			<tr>
+				<th>OrderId</th>
+				<th>AgentId</th>
+				<th>Amount</th>
+				<th>Source</th>
+				<th>Destination</th>
+				<th>Status</th>
+				<th>Action</th>
+			</tr>
+			<c:forEach var="order" items="${Corders}">
+				<tr>
+					<td><c:out value="${order.id}" /></td>
+					<td><c:out value="${order.agent.id}" /></td>
+					<td><c:out value="${order.amount}" /></td>
+					<td><c:out value="${order.source}" /></td>
+					<td><c:out value="${order.destination}" /></td>
+					<td><c:out value="${order.status}" /></td>
+					<td><button id="btn-decline" class="button" onclick="deleteorder(this)">Delete</button>
+					</td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
 	
-    <div class="footer fixed-bottom">
-    <p>DaneEats@Ualbany</p>
-    </div>
-
-
+	
+	<script>
+	 var deleteorder = function(button)
+	 {
+		 var id =  button.parentElement.parentElement.firstElementChild.innerHTML;
+		 let order = {};
+		 order["id"] = id;
+		 order["agentId"] = 1;//userId;
+		 let requestURL = "/api/delivery/cancelorder";
+		 let request = new XMLHttpRequest();
+		 request.open('POST', requestURL); 
+		 request.setRequestHeader("Content-type", "application/json;charset=UTF-8");
+	     request.responseType = 'json';
+		 request.send(JSON.stringify(order));
+		 request.onload = function(){
+			 const reportdatajson = request.response;
+			 if(reportdatajson.status == "Done"){
+				 alert("Success");
+			 }
+			 else{
+				 alert("Error"); 
+			 }
+		 }	
+	 }
+	 </script>
 </body>
 </html>

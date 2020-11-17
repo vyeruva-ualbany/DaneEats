@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ualbany.daneeats.model.Role;
 import com.ualbany.daneeats.model.User;
+import com.ualbany.daneeats.model.MenuItem;
+import com.ualbany.daneeats.model.Restaurant;
 import com.ualbany.daneeats.model.UserRoleType;
 import com.ualbany.daneeats.service.OrderService;
 import com.ualbany.daneeats.service.UserService;
@@ -63,6 +65,34 @@ public class UserController {
         verificationTokenService.createVerification(userForm.getEmail());
         return "verification-form";
     }
+    
+    @GetMapping("/registerbyadmin")
+    public String registration1(Model model) {
+        model.addAttribute("userForm", new User());
+
+        return "adminUser";
+    }
+
+    @PostMapping("/registerbyadmin")
+    public String registration1(@ModelAttribute("userForm") User userForm, BindingResult bindingResult,Model model) {
+        userValidator.validate(userForm, bindingResult);
+
+        if (bindingResult.hasErrors()) {
+            return "adminUser";
+        }
+        Date now = new Date();
+        Role role = new Role();
+        role.setCreatedAt(now);
+        role.setUpdatedAt(now);
+        role.setRoleType(UserRoleType.CUSTOMER);
+        
+        userForm.addRole(role);
+        userForm.setCreatedAt(now);
+        userForm.setUpdatedAt(now);
+        userService.save(userForm);
+
+       return "adminHome";
+    }
 
     @GetMapping("/verify-email")
     @ResponseBody
@@ -75,6 +105,19 @@ public class UserController {
     	
         return "home";
     }
+    @GetMapping("/addrestaurant")
+    public String addrestaurant(Model model) {
+        model.addAttribute("userForm", new Restaurant());
+
+        return "adminRestaurant";
+    }
+    @GetMapping("/updatemenu")
+    public String updatemenu(Model model) {
+        model.addAttribute("userForm", new MenuItem());
+
+        return "adminMenu";
+    }
+
     @GetMapping("/login")
     public String login(Model model, String error, String logout) {
     	model.addAttribute("userForm", new User());
