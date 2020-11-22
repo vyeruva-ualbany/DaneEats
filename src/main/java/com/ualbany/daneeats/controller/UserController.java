@@ -66,34 +66,6 @@ public class UserController {
         return "verification-form";
     }
     
-    @GetMapping("/registerbyadmin")
-    public String registration1(Model model) {
-        model.addAttribute("userForm", new User());
-
-        return "adminUser";
-    }
-
-    @PostMapping("/registerbyadmin")
-    public String registration1(@ModelAttribute("userForm") User userForm, BindingResult bindingResult,Model model) {
-        userValidator.validate(userForm, bindingResult);
-
-        if (bindingResult.hasErrors()) {
-            return "adminUser";
-        }
-        Date now = new Date();
-        Role role = new Role();
-        role.setCreatedAt(now);
-        role.setUpdatedAt(now);
-        role.setRoleType(UserRoleType.CUSTOMER);
-        
-        userForm.addRole(role);
-        userForm.setCreatedAt(now);
-        userForm.setUpdatedAt(now);
-        userService.save(userForm);
-
-       return "adminHome";
-    }
-
     @GetMapping("/verify-email")
     @ResponseBody
     public String verifyEmail(String code) {
@@ -104,18 +76,6 @@ public class UserController {
     public String home() {
     	
         return "home";
-    }
-    @GetMapping("/addrestaurant")
-    public String addrestaurant(Model model) {
-        model.addAttribute("userForm", new Restaurant());
-
-        return "adminRestaurant";
-    }
-    @GetMapping("/updatemenu")
-    public String updatemenu(Model model) {
-        model.addAttribute("userForm", new MenuItem());
-
-        return "adminMenu";
     }
 
     @GetMapping("/login")

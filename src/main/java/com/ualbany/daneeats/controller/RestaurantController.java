@@ -1,11 +1,15 @@
 package com.ualbany.daneeats.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,16 +27,20 @@ public class RestaurantController {
 	   @Autowired 
 	    private RestaurantService service;
 
-	    @PostMapping(path="/add") 
-	     public @ResponseBody String addNewRestaurant (@RequestParam String name
-	      , @RequestParam String phone, @RequestParam String address1, @RequestParam String address2) {
+	    @GetMapping("/add")
+	    public String addrestaurant(Model model) {
+	        model.addAttribute("userForm", new Restaurant());
 
-	    Restaurant restaurant = new Restaurant();  
-	    restaurant.setName(name);
-	    restaurant.setPhone(phone);
-	    restaurant.setAddress1(address1);
-	    restaurant.setAddress2(address2);
-	    service.save(restaurant);
+	        return "addrestaurant";
+	    }
+	    
+	    @PostMapping(path="/add") 
+	     public @ResponseBody String addNewRestaurant (@ModelAttribute("restaurantForm") Restaurant restaurant, 
+	    		 BindingResult bindingResult,Model model) {
+	    	Date now = new Date();
+	    	restaurant.setCreatedAt(now);
+	    	restaurant.setUpdatedAt(now);
+	    	service.save(restaurant);
 	    return "Saved";
 	  }
 

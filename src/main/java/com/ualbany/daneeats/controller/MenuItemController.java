@@ -1,15 +1,23 @@
 package com.ualbany.daneeats.controller;
 
 import com.ualbany.daneeats.model.MenuItem;
+import com.ualbany.daneeats.model.Restaurant;
+import com.ualbany.daneeats.model.User;
 import com.ualbany.daneeats.service.MenuItemService;
+import com.ualbany.daneeats.service.RestaurantService;
 
+import java.util.Date;
 import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,15 +30,26 @@ public class MenuItemController {
 
     @Autowired 
     private MenuItemService service;
+    
+    @Autowired 
+    private RestaurantService restaurant_service;
 
+
+    @GetMapping("/add")
+    public String updatemenu(Model model) {
+        model.addAttribute("userForm", new MenuItem());
+        List<Restaurant> list = restaurant_service.findAll();
+        ModelAndView mv = new ModelAndView("addmenu");
+        mv.addObject("restaurants", list);
+        return "addmenu";
+    }
+    
     @PostMapping(path="/add") 
-     public @ResponseBody String addNewItem (@RequestParam String name
-      , @RequestParam Double price, @RequestParam Integer calories, @RequestParam String description) {
-
-    MenuItem item = new MenuItem();  
-    item.setName(name);
-    item.setPrice(price);
-    service.save(item);
+    public @ResponseBody String addNewItem (@ModelAttribute("menuItemForm") MenuItem menuitem, BindingResult bindingResult,Model model) {
+    	Date now = new Date();
+    	menuitem.setCreatedAt(now);
+    	menuitem.setUpdatedAt(now);
+    	service.save(menuitem);
     return "Saved";
   }
 

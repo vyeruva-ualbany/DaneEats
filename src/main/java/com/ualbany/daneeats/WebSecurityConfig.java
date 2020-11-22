@@ -41,7 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 		"img/cart.svg","js/jquery.min.js","js/mycart.js","js/mycart-custom.js","custom-general.js","/customer/currentorders","css/style.css",
                 		"/customer/profile", "/customer/placeorder","/menu.html","/customer/save","/previousOrders.jsp","/CurrentOrders.jsp","/PreviousOrdersD.jsp","/ongoingOrders.jsp",
                 		"/delivery/currentorders","/delivery/claimedorders","/delivery/availableorders","/delivery/allorders","/delivery/previousordersd","/ProcessOrder.jsp","/login.jsp","/login","/updateUsername.jsp",
-                		"/adminHome.jsp","/adminUser.jsp","/adminOrders.jsp","/registerbyadmin","/adminRestaurant.jsp","/adminMenu.jsp","/addrestaurant","/updatemenu").permitAll()
+                		"/adminHome.jsp","/adminUser.jsp","/adminOrders.jsp","/registerbyadmin","/adminRestaurant.jsp","/addmenu.jsp","/addrestaurant","/updatemenu").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 

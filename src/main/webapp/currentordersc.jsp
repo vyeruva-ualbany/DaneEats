@@ -3,8 +3,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html lang="en">  
@@ -24,9 +22,9 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"> <a class="nav-link" href="${contextPath}/customer/profile">Profile</a>
                 </li>
-                <li class="nav-item"> <a class="nav-link" href="${contextPath}/customer/placeorder">Place Order</a>
+                <li class="nav-item active"> <a class="nav-link" href="${contextPath}/customer/placeorder">Place Order<span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item active"> <a class="nav-link" href="${contextPath}/customer/currentorders">Current Orders<span class="sr-only">(current)</span></a>
+                <li class="nav-item"> <a class="nav-link" href="${contextPath}/customer/currentorders">Current Orders</a>
                 </li>
                 <li class="nav-item"> <a class="nav-link" href="${contextPath}/customer/pastorders">Past Orders</a>
                 </li>
@@ -67,12 +65,15 @@
 							  <tbody>
 							  	<c:forEach var="order" items="${orders}">
 		                        	<tr>
-		                                <td>${order.id}</td>
-		                        	    <td>${order.destination}</td>
-		                                <td>${order.source}</td>
+		                                <td>${order.id}"</td>
+		                        	    <td>${order.destination}"</td>
+		                                <td>${order.source}"</td>
 		                             	<td>${order.num}</td>
 		                             	<td>${order.status}</td>
-		                             	<td><fmt:formatNumber value = "${order.amount}" type = "currency"/></td>
+		                             	<td>${order.amount}</td>
+		                             	
+		                                
+		                                
 	                                </tr>
 	                     		</c:forEach>
 							  </tbody>

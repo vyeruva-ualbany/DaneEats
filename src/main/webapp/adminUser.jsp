@@ -67,8 +67,8 @@ float:left
     </div>
     <div class="container">
 
-        <form:form method="POST" action="${contextPath}/registerbyadmin" modelAttribute="userForm" class="form-signin">
-            <h2 class="heading" >Create your account</h2>
+        <form:form method="POST" action="${contextPath}/addcustomer" modelAttribute="userForm" class="form-signin">
+            <h2 class="heading" >Create Customer Account</h2>
             <spring:bind path="username">
                 <div class="form-group ${status.error ? 'has-error' : ''}">
                     <form:input type="text" path="username" class="form-control" placeholder="Username"

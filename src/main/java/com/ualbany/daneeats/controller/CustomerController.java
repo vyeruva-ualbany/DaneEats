@@ -68,7 +68,7 @@ public class CustomerController {
     @GetMapping("/pastorders")
     public ModelAndView pastorders() {
        System.out.print("hello");
-       ModelAndView modelandview =new ModelAndView("orders");
+       ModelAndView modelandview =new ModelAndView("pastorders");
        List<Order> orders=orderservice.findAll();
        
        modelandview.addObject("orders",orders);

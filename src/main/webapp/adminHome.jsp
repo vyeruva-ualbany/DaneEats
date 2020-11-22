@@ -180,8 +180,8 @@ html {
   <div class="col-3 col-s-3 menu">
     <ul>
       <li><a href="${contextPath}/registerbyadmin">Add User</a></li>
-      <li><a href="${contextPath}/addrestaurant">Add Restaurant</a></li>
-      <li><a href="${contextPath}/updatemenu">Add MenuItem</a></li>
+      <li><a href="${contextPath}/restaurant/add">Add Restaurant</a></li>
+      <li><a href="${contextPath}/menuitem/add">Add MenuItem</a></li>
       <li><a href="${contextPath}/delivery/allorders">Manage Deliveries</a></li>
       
     </ul>
