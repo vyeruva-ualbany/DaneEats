@@ -44,6 +44,8 @@ public class Order extends Persistable {
     private String source;
 
     private String destination;
+    
+    private String phoneNumber;
 	
     private List<OrderItem> items = new ArrayList<OrderItem>();
     public int getNum() {
@@ -128,5 +130,13 @@ public class Order extends Persistable {
 	public void removeOrderItem(OrderItem item) {
 		this.items.remove(item);
 		item.setOrder(null);
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 }

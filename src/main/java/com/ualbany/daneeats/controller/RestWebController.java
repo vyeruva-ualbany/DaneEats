@@ -63,7 +63,7 @@ public class RestWebController {
 	    }
 	
 	@PostMapping(value = "/order/save")
-	public Response postCustomer(@RequestBody String order) {
+	public Response saveOrder(@RequestBody String order) {
 		// cust.add(customer);
 		JSONObject jsonOrder = new JSONObject(order.toString());
 
@@ -88,6 +88,7 @@ public class RestWebController {
 		ord.setSource(items.get(0).getMenuItem().getRestaurant().getName());
 		ord.setDestination(jsonOrder.getString("destination"));
 		ord.setAmount(jsonOrder.getDouble("amount"));
+		ord.setPhoneNumber(jsonOrder.getString("phonenumber"));
 		setpersistableproperties(ord, user);
 		orderservice.save(ord);
 		// Create Response Object

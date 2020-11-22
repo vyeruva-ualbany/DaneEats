@@ -55,10 +55,16 @@
       localStorage.products = JSON.stringify(products);
     }
     var setDestination = function(destination){
-      localStorage.destination = JSON.stringify(destination);
+      localStorage.destination = destination;
     }
     var getDestination = function(){
       return localStorage.destination;
+    }
+    var setPhoneNumber = function(phonenumber){
+      localStorage.phonenumber = phonenumber;
+    }
+    var getPhoneNumber = function(){
+      return localStorage.phonenumber;
     }
     var setAllProducts = function(products){
       localStorage.products = JSON.stringify(products);
@@ -153,6 +159,8 @@
     objToReturn.getTotalQuantityOfProduct = getTotalQuantityOfProduct;
     objToReturn.setDestination = setDestination;
     objToReturn.getDestination = getDestination;
+    objToReturn.getPhoneNumber = getPhoneNumber;
+    objToReturn.setPhoneNumber = setPhoneNumber;
     return objToReturn;
   }());
 
@@ -174,6 +182,7 @@
     var classAffixMyCartIcon = 'my-cart-icon-affix';
     var idDiscountPrice = 'my-cart-discount-price';
     var classDestination = 'my-cart-destination';
+    var classPhoneNumber = 'my-cart-phonenumber';
 
     $cartBadge.text(ProductManager.getTotalQuantityOfProduct());
 
@@ -249,8 +258,16 @@
           '<tr>' +
           '<td></td>' +
           '<td><strong>Destination</strong></td>'+ 
-          '<td></td>' +
           '<td title="Destination"><input type="text" style="width: 150px;" class="' + classDestination + '" value=' + destination + '/></td>' +
+          '<td></td>' +
+          '</tr>'
+        );
+      var phonenumber="";
+      $cartTable.append(
+          '<tr>' +
+          '<td></td>' +
+          '<td><strong>Phone Number</strong></td>'+ 
+          '<td title="PhoneNumber"><input type="text" style="width: 150px;" class="' + classPhoneNumber + '" value=' + phonenumber + '/></td>' +
           '<td></td>' +
           '</tr>'
         );
@@ -324,6 +341,11 @@
       ProductManager.setDestination(destination);
     });
     
+    $(document).on("input", "." + classPhoneNumber, function () {
+      var phonenumber = $(this).val();
+      ProductManager.setPhoneNumber(phonenumber);
+    });
+    
     $("#" + idCheckoutCart).click(function(){
       var products = ProductManager.getAllProducts();
       if(!products.length) {
@@ -331,7 +353,7 @@
         return ;
       }
       updateCart();
-      options.checkoutCart(ProductManager.getAllProducts(), ProductManager.getDestination());
+      options.checkoutCart(ProductManager.getAllProducts(), ProductManager.getDestination(), ProductManager.getPhoneNumber());
       ProductManager.clearProduct();
       $cartBadge.text(ProductManager.getTotalQuantityOfProduct());
       $("#" + idCartModal).modal("hide");

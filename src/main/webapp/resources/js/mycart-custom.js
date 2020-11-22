@@ -98,7 +98,7 @@ $(function () {
     classCartIcon: 'my-cart-icon',
     classCartBadge: 'my-cart-badge',
     affixCartIcon: true,
-    checkoutCart: function(products, destination) {
+    checkoutCart: function(products, destination, phonenumber) {
       let items = [];
       let total = 0;
       $.each(products, function(){
@@ -113,6 +113,7 @@ $(function () {
       order["customerId"] = 1;
       order["amount"] = total;
       order["destination"] = destination;
+      order["phonenumber"] = phonenumber;
       order["items"] = items;
       saveOrder(order);
     },
