@@ -18,7 +18,12 @@ body {
     padding-top: 50px;
     padding-bottom: 100px
 }
-
+table {
+	background-color : white;
+}
+h1{
+	color : white;
+}
 .frame {
     background: #60E9F4
     background-size: cover;
@@ -181,6 +186,8 @@ html {
 				<th>AgentId</th>
 				<th>Amount</th>
 				<th>Source</th>
+				<th>Menu Items</th>
+				<th>Phone Number</th>
 				<th>Destination</th>
 				<th>Status</th>
 				<th>Action</th>
@@ -191,6 +198,8 @@ html {
 					<td><c:out value="${order.agent.id}" /></td>
 					<td><c:out value="${order.amount}" /></td>
 					<td><c:out value="${order.source}" /></td>
+					<td><c:out value="${order.items}"/></td>
+					<td><c:out value="${order.phoneNumber}"/></td>
 					<td><c:out value="${order.destination}" /></td>
 					<td><c:out value="${order.status}" /></td>
 					<td><button id="btn-decline" class="button" onclick="deleteorder(this)">Delete</button>

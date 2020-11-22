@@ -29,7 +29,12 @@ body {
   font-size: 17px;
 }
 
-
+table {
+	background-color : white;
+}
+h1{
+	color : white;
+}
 .topnav a:hover {
   background-color: #373434;
   color: black;
@@ -104,7 +109,6 @@ table, th, td ,tr{
 	padding: 15px;
 	text-align: left;
 	border-spacing: 5px;
-	 color:white;
 }
 
 .center {
@@ -166,6 +170,8 @@ input[type=submit] {
 				<th>AgentId</th>
 				<th>Amount</th>
 				<th>Source</th>
+				<th>Menu Items</th>
+				<th>Phone Number</th>
 				<th>Destination</th>
 				<th>Status</th>
 				<th>Action</th>
@@ -176,6 +182,8 @@ input[type=submit] {
 					<td><c:out value="${order.agent.id}" /></td>
 					<td><c:out value="${order.amount}" /></td>
 					<td><c:out value="${order.source}" /></td>
+					<td><c:out value="${order.items}"/></td>
+					<td><c:out value="${order.phoneNumber}"/></td>
 					<td><c:out value="${order.destination}" /></td>
 					<td><c:out value="${order.status}" /></td>
 					<td><button id="btn-accept" class="button"

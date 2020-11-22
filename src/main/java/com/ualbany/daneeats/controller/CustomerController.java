@@ -40,7 +40,16 @@ public class CustomerController {
         ModelAndView mv = new ModelAndView("customerprofile");
         return mv;
     }
-    
+    @GetMapping("/changepassword")//for both /,welcome this will be called
+    public ModelAndView passChange(Model model) {
+        ModelAndView mv = new ModelAndView("changePassC");
+        return mv;
+    }
+    @GetMapping("/updateusername")//for both /,welcome this will be called
+    public ModelAndView updateUsername(Model model) {
+        ModelAndView mv = new ModelAndView("updateUsernameC");
+        return mv;
+    }
     @PostMapping("/placeorder")//for both /,welcome this will be called
     public ModelAndView placeOrderPost(Model model) {
     	 ModelAndView mv = new ModelAndView("customer");

@@ -87,7 +87,7 @@ float:left
         </div>
         <a href="#home" class="active">DaneEats</a>
         <a href="${contextPath}/home">Back to Home</a>
-        <a class ="topnavright" href="">SignUp</a>
+        <a class ="topnavright" href="${contextpath}/register">SignUp</a>
     </div>
     <div class="maincontent">
 	    <section id="">
@@ -123,9 +123,6 @@ float:left
 				action="${contextPath}/login" value="${_csrf.token}" />
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Log
 				In</button>
-			<h4 class="text-center">
-				<a href="${contextPath}/register">Create an account</a>
-			</h4>
 		</form:form>
 		</div>
 			    </div>
@@ -159,9 +156,6 @@ float:left
 				action="${contextPath}/login" value="${_csrf.token}" />
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Log
 				In</button>
-			<h4 class="text-center">
-				<a href="${contextPath}/register">Create an account</a>
-			</h4>
 		</form:form>
 
 			    </div>

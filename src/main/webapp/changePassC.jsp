@@ -6,25 +6,40 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-h1 {
-  text-decoration: underline;
-}
-.navbar {
+    background: url(https://livewallpaperhd.com/wp-content/uploads/2020/09/Wallpaper-HD-Food.jpg) no-repeat center center fixed;
+    background-size: cover
+	}
+.topnav {
+  background-color: #020000;
   overflow: hidden;
-  background-color: #333;
 }
 
-.navbar a {
+table {
+	background-color : white;
+}
+h1{
+	color : white;
+}
+.topnav a {
   float: left;
-  font-size: 16px;
+  display: block;
   color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  font-size: 17px;
 }
 
+
+.topnav a:hover {
+  background-color: #373434;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #2E2B2B;
+  color: white;
+}
 .dropdown {
   float: right;
   overflow: hidden;
@@ -70,13 +85,6 @@ h1 {
 .dropdown:hover .dropdown-content {
   display: block;
 }
-header {
-  background-color: #b2c5fa;
-  padding: 20px;
-  text-align: center;
-  font-size: 35px;
-  color: white;
-}
 
 .sidenav {
   height: 100%;
@@ -121,34 +129,15 @@ header {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
-.slide{
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 100%;
-    background-color: $green;
-  background-image:url(image2.jpg);
-  background-repeat: repeat;
-  font-family: "Montserrat", sans-serif;
-  text-align: center;
-  animation: marquee 30s infinite linear;
 
-code {
-    padding: 4px;
-    background-color: #333;
-    border-radius: 5px;
-  }
-}
-
-@keyframes marquee {
-  0% {
-    background-position: 0;
-  }
-
-  100% {
-    background-position: -1190px;
-  }
+input[type=text]{
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 input[type=password]{
   width: 50%;
@@ -183,31 +172,25 @@ input[type=submit]:hover {
 </style>
 </head>
 <body>
-<header><div class="slide">
-  <h1 style="color:#800080";><strong>UAlbany DaneEats!</strong></h1>
-  <p style="color:#9932CC";>A balanced diet is a cookie in each hand 😬</p>
-</div></header>
-<div class="navbar">
-  <a href="intro.jsp">Home</a>
-  <a href="order.jsp">Order</a>
-  <a href="#news">Support</a>
+
+	<div class="topnav" id="myTopnav">
+        <a href="#home" class="active">DaneEats</a>
+        <a href="${contextpath}/customer/profile">Back</a>
   <div class="dropdown">
     <button class="dropbtn">About 
       <i class="fa fa-caret-down"></i>
     </button>
-    <div class="dropdown-content">
-      <a href="CustomerProfile.jsp">Profile</a>
-      <a href="#">Orders</a>
-      <a href="#">Addresses</a>
-      <a href="#">Payments</a>
-      <a href="home.jsp">Logout</a>
-    </div>
-  </div> 
-</div>
+        <div class="dropdown-content">
+        <a href="${contextPath}/customer/profile">Profile</a>
+        <a href="#">Payments</a>
+        <a href="home.jsp">Logout</a>
+        </div>
+   </div>
+  </div>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">Update Information</a>
-  <a href="changePassC.jsp">Change Password</a>
+  <a href="${contextpath}/customer/updateusername">Update Information</a>
+  <a href="${contextpath}/customer/changepassword">Change Password</a>
   <a href="#">Unsubscribe</a>
 </div>
 
@@ -217,25 +200,25 @@ input[type=submit]:hover {
 <center>
 <br><br><br><center>
 <div id="division">
-  <form method="POST" action="${contextPath}/change" class="form-signin">
+  <form method="POST" id="my-form" action="#" class="form-signin">
         <h2 class="form-heading">change password</h2>
 
         <div class="form-group ${error != null ? 'has-error' : ''}">
             <span>${message}</span>
-            <label for="pwd1">Enter Old Password</label>
-            <input type="password" id="pwd1" name="pwd1"><br><br><br>
-    		<label for="pwd2">Enter New Password</label>
-   			 <input type="password" id="pwd2" name="pwd2"><br><br><br>
-            <label for="pwd3">confirm New Password</label>
-   			 <input type="password" id="pwd3" name="pwd3"><br><br><br>
+            
+            <input type="text" id="username" name="username" placeholder="Enter Username"><br><br><br>
+   			 <input type="password" id="pwd2" name="pwd2" placeholder="Enter New Password"><br><br><br>
+   			 <input type="password" id="pwd3" name="pwd3" placeholder="confirm New Password"><br><br><br>
             <span>${error}</span>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Update Information</button>
            
         </div>
       </form>
 </div>
+<p id="demo"></p>
+<p id="demo1"></p>
 <script>
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
