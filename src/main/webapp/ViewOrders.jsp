@@ -2,8 +2,9 @@
     pageEncoding="UTF-8"%>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
  <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
  
 <!DOCTYPE html>
@@ -181,7 +182,7 @@ input[type=submit] {
                     <td><c:out value="${order.phoneNumber}"/></td>
                     <td><c:out value="${order.destination}" /></td>
                     <td><c:out value="${order.status}" /></td>
-                    <td><c:out value="${order.amount}" /></td>
+                    <td><fmt:formatNumber value ="${order.amount}" type = "currency"/></td>
                     <td><button class="button" onclick="claimfn(this)" >Claim</button></td>
                 </tr>
             </c:forEach>

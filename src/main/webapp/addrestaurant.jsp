@@ -242,24 +242,24 @@ iinput[type=text], select {
 
 	<center>
 		<form method="POST" id="my-form" action="${contextPath}/restaurant/add" modelAttribute="restaurant" class="form-signin">
-			<h2 class="heading" >Add New Restaurant</h2>
+			<h2 class="heading" >Add New Restaurant</h2><br><br>
 			<div class="form-group">
 				<spring:bind path="name">
 				<input type="text" id="Name" name="Name" placeholder="Name">
-				</spring:bind>
+				</spring:bind><br><br>
 				<spring:bind path="phone">
 				<input type="text" id="Phone" name="Phone" placeholder="Phone">
-				</spring:bind>
+				</spring:bind><br><br>
 				<spring:bind path="address1">
 				<input type="text" id="Address1" name="Address" placeholder="Address">
-				</spring:bind>
+				</spring:bind><br><br>
 				<spring:bind path="address2">
 				<input type="text" id="Address2" name="Address" placeholder="Address">
-				</spring:bind>
+				</spring:bind><br><br>
 				<spring:bind path="description">
 				<input type="text" id="Description" name="Description" placeholder="Description">
-				</spring:bind>
-				<button class="btn btn-lg btn-primary btn-block" type="submit">Add Restaurant</button>
+				</spring:bind><br><br>
+				<input type="submit" value="Add Restaurant">
 			</div>
 		</form>
 	</center>

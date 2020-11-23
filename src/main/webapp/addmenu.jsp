@@ -232,30 +232,22 @@ html {
 		<form method="POST" id="my-form" action="${contextPath}/menuitem/add"
 			modelAttribute="menuitem" class="form-signin">
 			<h2 class="heading">Add New MenuItem</h2>
-			<div class="form-group">
+			<div class="form-group"><br><br>
 				<spring:bind path="name">
 					<input type="text" id="Name" name="Name" placeholder="Name">
-				</spring:bind>
+				</spring:bind><br><br>
 				<spring:bind path="price">
 					<input type="text" id="price" name="Price" placeholder="0.00">
-				</spring:bind>
+				</spring:bind><br><br>
 				<spring:bind path="calories">
 					<input type="text" id="calories" name="Calories"
 						placeholder="Calories">
-				</spring:bind>
+				</spring:bind><br><br>
 				<spring:bind path="description">
 					<input type="text" id="description" name="Description"
 						placeholder="Description">
-				</spring:bind>
-				<spring:bind path="restaurant">
-					<select name="restaurant">
-						<c:forEach items="${restaurants}" var="restaurant">
-							<option value="${restaurant.id}">${restaurant.name}</option>
-						</c:forEach>
-					</select>
-				</spring:bind>
-				<button class="btn btn-lg btn-primary btn-block" type="submit">Add
-					MenuItem</button>
+				</spring:bind><br><br>
+				<input type="submit" value="Add Menu Item">
 
 			</div>
 		</form>

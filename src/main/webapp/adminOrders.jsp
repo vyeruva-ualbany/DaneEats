@@ -192,7 +192,7 @@ html {
 				<th>Status</th>
 				<th>Action</th>
 			</tr>
-			<c:forEach var="order" items="${Corders}">
+			<c:forEach var="order" items="${Aorders}">
 				<tr>
 					<td><c:out value="${order.id}" /></td>
 					<td><c:out value="${order.agent.id}" /></td>
