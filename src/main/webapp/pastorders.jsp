@@ -35,18 +35,6 @@
     </nav>
     
     <body>
-        <div class="block hero1 my-auto" style="background-image:url(${pageContext.request.contextPath}/resources/img/customer_banner.jpg);">
-            <div class="container-fluid text-center">
-                 <h1 class="display-2 text-white" data-aos="fade-up" data-aos-duration="1000"
-                data-aos-offset="0">UAlbany Campus Restaurants</h1>
-                <p class="lead text-white" data-aos="fade-up" data-aos-duration="1000"
-                data-aos-delay="600">Browse a restaurants and place your order</p>
-                <a
-                href="#menu" class="btn-text lead d-inline-block text-white border-top border-bottom mt-4 pt-1 pb-1"
-                data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1200">View Restaurants</a>
-            </div>
-            <div class="clearfix"></div>
-        </div>
         <div class="maincontent">
             <div class="container">
                 <section id="menu">

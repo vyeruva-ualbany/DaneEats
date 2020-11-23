@@ -55,11 +55,8 @@ public class DeliveryController {
     @GetMapping("/allorders")
     public ModelAndView allorders(Long agentId) {
        ModelAndView modelandview1 =new ModelAndView("adminOrders");
-       User user = userservice.findByUsername(userValidator.username);
-       List<Order> aorders=orderservice.findByStatus(OrderStatus.NEW);
-       modelandview1.addObject("Corders",aorders);
-       List<Order> aorders1=orderservice.findAgentOrdersWithStatus(user.getId(),OrderStatus.ACCEPTED_BY_AGENT,OrderStatus.CLAIMED_BY_AGENT,OrderStatus.PICKED_UP);
-       modelandview1.addObject("Corders",aorders1);
+       List<Order> aorders=orderservice.findAll();
+       modelandview1.addObject("Aorders",aorders);
 		return modelandview1;
     } 
     

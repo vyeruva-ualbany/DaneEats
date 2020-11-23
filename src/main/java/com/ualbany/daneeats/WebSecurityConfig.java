@@ -41,7 +41,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             		"img/cart.svg","js/jquery.min.js","js/mycart.js","js/mycart-custom.js","custom-general.js","/customer/currentorders","css/style.css",
             		"/customer/profile","/customer/updateusername", "/customer/placeorder","/menu.html","/customer/save","/previousOrders.jsp","/CurrentOrders.jsp","/PreviousOrdersD.jsp","/ongoingOrders.jsp",
             		"/delivery/currentorders","/delivery/claimedorders","/delivery/availableorders","/delivery/allorders","/delivery/previousordersd","/ProcessOrder.jsp","/login.jsp","/login","/updateUsername.jsp","/updateUsernameC.jsp",
-            		"/adminHome.jsp","/adminUser.jsp","/adminOrders.jsp","/registerbyadmin","/adminRestaurant.jsp","/adminMenu.jsp","/addrestaurant","/updatemenu","/delivery/changepassword","/delivery/updateusername","/customer/changepassword").permitAll()
+            		"/adminHome.jsp","/adminUser.jsp","/adminOrders.jsp","/registerbyadmin","/adminrestaurant.jsp","/adminmenu.jsp","/addrestaurant","/updatemenu","/delivery/changepassword","/delivery/updateusername","/customer/changepassword",
+            		"/admin/allorders","/admin/addcustomer","/admin/adddeliveryagent","/menuitem/add","/restaurant/add").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 
