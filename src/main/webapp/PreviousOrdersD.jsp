@@ -17,7 +17,12 @@
   overflow: hidden;
 }
 
-
+table {
+	background-color : white;
+}
+h1{
+	color : white;
+}
 .topnav a {
   float: left;
   display: block;
@@ -99,7 +104,6 @@
       padding: 15px;
       text-align: left;
       border-spacing: 5px;
-      color:white;
     }
     .center {
       margin-left: auto;
@@ -153,6 +157,8 @@
             <tr>
                 <th>OrderId</th>
                 <th>Source</th>
+                <th>Menu Items</th>
+                <th>Phone Number</th>
                 <th>Destination</th>
                 <th>status</th>
                 <th>Amount</th>
@@ -161,6 +167,8 @@
                 <tr>
                     <td><c:out value="${order.id}" /></td>
                     <td><c:out value="${order.source}" /></td>
+                    <td><c:out value="${order.items}"/></td>
+                    <td><c:out value="${order.phoneNumber}"/></td>
                     <td><c:out value="${order.destination}" /></td>
                     <td><c:out value="${order.status}" /></td>
                     <td><c:out value="${order.amount}" /></td>

@@ -30,7 +30,12 @@ body {
   overflow: hidden;
 }
 
-
+table {
+	background-color : white;
+}
+h1{
+	color : white;
+}
 .topnav a {
   float: left;
   display: block;
@@ -163,7 +168,7 @@ input[type=submit]:hover {
 
 	<div class="topnav" id="myTopnav">
         <a href="#home" class="active">DaneEats</a>
-        <a href="ViewOrders.jsp">Home</a>
+        <a href="${contextpath}/profile">Home</a>
   <div class="dropdown">
     <button class="dropbtn">About 
       <i class="fa fa-caret-down"></i>
@@ -174,22 +179,11 @@ input[type=submit]:hover {
         <a href="home.jsp">Logout</a>
         </div>
    </div>
-    <div class="dropdown">
-    <button class="dropbtn">Orders 
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-     <a href="${contextPath}/delivery/availableorders">Available Orders</a>
-					  <a href="${contextPath}/delivery/claimedorders">Claimed Orders</a>
-					   <a href="${contextPath}/delivery/currentorders">Ongoing Orders</a>
-					   <a href="${contextPath}/delivery/previousordersd">Previous Orders</a>
-    </div>
-  </div> 
   </div>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="updateUsername.jsp">Update Information</a>
-  <a href="changePassD.jsp">Change Password</a>
+  <a href="${contextpath}/delivery/updateusername">Update Information</a>
+  <a href="${contextpath}/delivery/changepassword">Change Password</a>
   <a href="#">Unsubscribe</a>
 </div>
 
@@ -201,7 +195,7 @@ input[type=submit]:hover {
 <div class="container">
  <div class="frame">
 <div id="division">
-  <form method="POST" id="my-form" action="#" onsubmit="update(this)" class="form-signin">
+  <form method="POST" id="my-form" action="#" class="form-signin">
         <h2 class="heading">Change Username</h2>
         <div>
             <label class="heading" for="username">Enter Username</label>
@@ -216,29 +210,6 @@ input[type=submit]:hover {
 </div>
 </div>
 <script>
-var update = function(button)
-{
-	 var inputs = document.getElementById("my-form").elements;
-	 var username=inputs["username"];
-	 var new_username = inputs["username1"];
-	 let user = {};
-	 user["username"]= username;
-	 user["new_username"] = new_username;
-	 let requestURL = "/api/user/updateusername";
-	 let request = new XMLHttpRequest();
-	 request.open('POST', requestURL); 
-	 request.setRequestHeader("Content-type", "application/json;charset=UTF-8");
-    request.responseType = 'json';
-	 request.send(JSON.stringify(order));
-	 request.onload = function(){
-		 const reportdatajson = request.response;
-		 if(reportdatajson.status == "Done"){
-			 alert("Success");
-		 }
-		 else{
-			 alert("Error"); 
-		 }
-	 }
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
   document.getElementById("main").style.marginLeft = "250px";

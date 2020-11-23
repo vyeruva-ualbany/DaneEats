@@ -26,15 +26,27 @@
                 </li>
                 <li class="nav-item"> <a class="nav-link" href="${contextPath}/customer/placeorder">Place Order</a>
                 </li>
-                <li class="nav-item active"> <a class="nav-link" href="${contextPath}/customer/currentorders">Current Orders<span class="sr-only">(current)</span></a>
+                <li class="nav-item"> <a class="nav-link" href="${contextPath}/customer/currentorders">Current Orders</a>
                 </li>
-                <li class="nav-item"> <a class="nav-link" href="${contextPath}/customer/pastorders">Past Orders</a>
+                <li class="nav-item active"> <a class="nav-link" href="${contextPath}/customer/pastorders">Past Orders<span class="sr-only">(current)</span></a>
                 </li>
             </ul>
         </div>
     </nav>
     
     <body>
+        <div class="block hero1 my-auto" style="background-image:url(${pageContext.request.contextPath}/resources/img/customer_banner.jpg);">
+            <div class="container-fluid text-center">
+                 <h1 class="display-2 text-white" data-aos="fade-up" data-aos-duration="1000"
+                data-aos-offset="0">UAlbany Campus Restaurants</h1>
+                <p class="lead text-white" data-aos="fade-up" data-aos-duration="1000"
+                data-aos-delay="600">Browse a restaurants and place your order</p>
+                <a
+                href="#menu" class="btn-text lead d-inline-block text-white border-top border-bottom mt-4 pt-1 pb-1"
+                data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1200">View Restaurants</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
         <div class="maincontent">
             <div class="container">
                 <section id="menu">
@@ -49,7 +61,7 @@
 							      <th scope="col">source</th>
 							      <th scope="col">agentId</th>
 							      <th scope="col">status</th>
-							       <th scope="col">amount</th>
+							      <td><fmt:formatNumber value = "${order.amount}" type = "currency"/></td>
 							    </tr>
 							  </thead>
 							  <tbody>
@@ -60,7 +72,7 @@
 		                                <td>${order.source}</td>
 		                             	<td>${order.num}</td>
 		                             	<td>${order.status}</td>
-		                             	<td><fmt:formatNumber value = "${order.amount}" type = "currency"/></td>
+		                             	<td><fmt:formatNumber value ="${order.amount}" type = "currency"/></td>
 	                                </tr>
 	                     		</c:forEach>
 							  </tbody>

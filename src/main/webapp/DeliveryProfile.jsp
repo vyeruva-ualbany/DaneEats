@@ -25,7 +25,12 @@ body {
   font-size: 17px;
 }
 
-
+table {
+	background-color : white;
+}
+h1{
+	color : white;
+}
 .topnav a:hover {
   background-color: #373434;
   color: black;
@@ -178,7 +183,7 @@ header {
 
 	<div class="topnav" id="myTopnav">
         <a href="#home" class="active">DaneEats</a>
-        <a href="ViewOrders.jsp">Home</a>
+        <a href="${contextpath}/profile">Home</a>
   <div class="dropdown">
     <button class="dropbtn">About 
       <i class="fa fa-caret-down"></i>
@@ -206,8 +211,8 @@ header {
 </div><br><br>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="updateUsername.jsp">Update Information</a>
-  <a href="changePassD.jsp">Change Password</a>
+  <a href="${contextpath}/delivery/updateusername">Update Information</a>
+  <a href="${contextpath}/delivery/changepassword">Change Password</a>
   <a href="#">Unsubscribe</a>
 </div>
 

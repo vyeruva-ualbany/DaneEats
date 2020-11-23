@@ -22,7 +22,12 @@ body {
   overflow: hidden;
 }
 
-
+table {
+	background-color : white;
+}
+h1{
+	color : white;
+}
 .topnav a {
   float: left;
   display: block;
@@ -105,14 +110,6 @@ html {
   width: 100%;
 }
 
-table, th, td,tr{
-  border: 2px solid black;
-  border-collapse: collapse;
-  padding: 15px;
-  text-align: left;
-  border-spacing: 5px;
-  color:white;
-}
 .center {
   margin-left: auto;
   margin-right: auto;
@@ -169,6 +166,8 @@ input[type=submit] {
             <tr>
                 <th>OrderId</th>
                 <th>Source</th>
+                <th>Menu Items</th>
+                <th>Phone Number</th>
                 <th>Destination</th>
                 <th>status</th>
                 <th>Amount</th>
@@ -178,6 +177,8 @@ input[type=submit] {
                 <tr>
                     <td><c:out value="${order.id}" /></td>
                     <td><c:out value="${order.source}" /></td>
+                    <td><c:out value="${order.items}"/></td>
+                    <td><c:out value="${order.phoneNumber}"/></td>
                     <td><c:out value="${order.destination}" /></td>
                     <td><c:out value="${order.status}" /></td>
                     <td><c:out value="${order.amount}" /></td>

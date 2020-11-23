@@ -6,14 +6,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body {
-    background: url(https://livewallpaperhd.com/wp-content/uploads/2020/09/Wallpaper-HD-Food.jpg) no-repeat center center fixed;
+  background: url(https://livewallpaperhd.com/wp-content/uploads/2020/09/Wallpaper-HD-Food.jpg) no-repeat center center fixed;
     background-size: cover
 	}
+	 .container {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 100px
+}
+
+.frame {
+    background: #60E9F4
+    background-size: cover;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+   
+    overflow: hidden;
+    transition: all .5s ease
+}
 .topnav {
   background-color: #020000;
   overflow: hidden;
 }
-
+table {
+	background-color : white;
+}
+h1{
+	color : white;
+}
 
 .topnav a {
   float: left;
@@ -25,12 +46,7 @@ body {
   font-size: 17px;
 }
 
-table {
-	background-color : white;
-}
-h1{
-	color : white;
-}
+
 .topnav a:hover {
   background-color: #373434;
   color: black;
@@ -56,9 +72,6 @@ h1{
   margin: 0;
 }
 
-.navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: red;
-}
 
 .dropdown-content {
   display: none;
@@ -130,24 +143,8 @@ h1{
   .sidenav a {font-size: 18px;}
 }
 
-input[type=text]{
-  width: 50%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-input[type=password]{
-  width: 50%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
+
+
 
 input[type=submit] {
   width: 10%;
@@ -164,24 +161,20 @@ input[type=submit]:hover {
   background-color: #45a049;
 }
 
-.division {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-}
+ .heading { color: #FFFFFF; }
 </style>
 </head>
 <body>
 
 	<div class="topnav" id="myTopnav">
         <a href="#home" class="active">DaneEats</a>
-        <a href="${contextpath}/profile">Home</a>
+        <a href="${contextPath}/customer/profile">Back</a>
   <div class="dropdown">
     <button class="dropbtn">About 
       <i class="fa fa-caret-down"></i>
     </button>
         <div class="dropdown-content">
-        <a href="${contextPath}/profile">Profile</a>
+        <a href="${contextPath}/customer/profile">Profile</a>
         <a href="#">Payments</a>
         <a href="home.jsp">Logout</a>
         </div>
@@ -189,8 +182,8 @@ input[type=submit]:hover {
   </div>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="${contextpath}/delivery/updateusername">Update Information</a>
-  <a href="${contextpath}/delivery/changepassword">Change Password</a>
+  <a href="${contextpath}/customer/updateusername">Update Information</a>
+  <a href="${contextpath}/customer/changepassword">Change Password</a>
   <a href="#">Unsubscribe</a>
 </div>
 
@@ -199,26 +192,23 @@ input[type=submit]:hover {
 </div>
 <center>
 <br><br><br><center>
+<div class="container">
+ <div class="frame">
 <div id="division">
   <form method="POST" id="my-form" action="#" class="form-signin">
-        <h2 class="form-heading">change password</h2>
-
-        <div class="form-group ${error != null ? 'has-error' : ''}">
-            <span>${message}</span>
-            
-            <input type="text" id="username" name="username" placeholder="Enter Username"><br><br><br>
-   			 <input type="password" id="pwd2" name="pwd2" placeholder="Enter New Password"><br><br><br>
-   			 <input type="password" id="pwd3" name="pwd3" placeholder="confirm New Password"><br><br><br>
-            <span>${error}</span>
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Update Information</button>
+        <h2 class="heading">Change Username</h2>
+        <div>
+            <label class="heading" for="username">Enter Username</label>
+            <input type="text" id="username" name="username"><br><br><br>
+    		<label  class="heading" for="username1">New Username</label>
+   			 <input type="text" id="username1" name="username1"><br><br><br>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Update</button>
            
         </div>
       </form>
 </div>
-<p id="demo"></p>
-<p id="demo1"></p>
+</div>
+</div>
 <script>
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";

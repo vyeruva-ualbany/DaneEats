@@ -46,6 +46,11 @@ public class OrderService {
         return orders;
     }
 
+    public List<Order> findAllbyCustomerOrdersWithStatus(Long id, OrderStatus... status) {
+    	List<Order> orders = repository.findAllByCustomerIdAndStatus(id, status);
+        return orders;
+    }
+    
     public List<Order> findByAgentId(Long id) {
     	List<Order> orders = repository.findByAgentId(id);
         return orders;

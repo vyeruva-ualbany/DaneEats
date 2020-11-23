@@ -14,6 +14,9 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
 	public List<Order> findByCustomerId(Long id);
 	public List<Order> findByCustomerIdAndStatus(Long id, OrderStatus status);
 	public List<Order> findByAgentId(Long id);
+	@Modifying(clearAutomatically = true)
+	@Query("select o from Order o where o.customer.id = ?1 and o.status in (?2)")
+	public List<Order> findAllByCustomerIdAndStatus(Long id, OrderStatus... status);
 	
 	@Modifying(clearAutomatically = true)
 	@Query("select o from Order o where o.agent.id = ?1 and o.status in (?2)")

@@ -33,6 +33,16 @@ public class DeliveryController {
         ModelAndView mv = new ModelAndView("customerprofile");
         return mv;
     }
+    @GetMapping("/changepassword")//for both /,welcome this will be called
+    public ModelAndView passChange(Model model) {
+        ModelAndView mv = new ModelAndView("changePassD");
+        return mv;
+    }
+    @GetMapping("/updateusername")//for both /,welcome this will be called
+    public ModelAndView updateUsername(Model model) {
+        ModelAndView mv = new ModelAndView("updateUsername");
+        return mv;
+    }
     
     @GetMapping("/allorders")
     public ModelAndView allorders(Long agentId) {

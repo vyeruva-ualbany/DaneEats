@@ -12,9 +12,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ualbany.daneeats.model.Order;
 import com.ualbany.daneeats.model.OrderStatus;
-import com.ualbany.daneeats.service.MenuItemService;
+import com.ualbany.daneeats.model.User;
 import com.ualbany.daneeats.service.OrderService;
-import com.ualbany.daneeats.service.RestaurantService;
+import com.ualbany.daneeats.service.UserService;
+import com.ualbany.daneeats.validator.UserValidator;
 
 @Controller
 @RequestMapping("/customer")
@@ -24,10 +25,10 @@ public class CustomerController {
 	OrderService  orderservice;
 	
 	@Autowired
-	MenuItemService menuservice;
+	UserService userservice;
 	
 	@Autowired
-	RestaurantService restaurantservice;
+	private UserValidator userValidator;
 	
     @PostMapping("/profile")//for both /,welcome this will be called
     public ModelAndView profilePost(Model model) {
@@ -41,10 +42,16 @@ public class CustomerController {
         return mv;
     }
     
-    @PostMapping("/placeorder")//for both /,welcome this will be called
-    public ModelAndView placeOrderPost(Model model) {
-    	 ModelAndView mv = new ModelAndView("customer");
-         return mv;
+    @GetMapping("/changepassword")//for both /,welcome this will be called
+    public ModelAndView passChange(Model model) {
+        ModelAndView mv = new ModelAndView("changePassC");
+        return mv;
+    }
+    
+    @GetMapping("/updateusername")//for both /,welcome this will be called
+    public ModelAndView updateUsername(Model model) {
+        ModelAndView mv = new ModelAndView("updateUsernameC");
+        return mv;
     }
     
     @GetMapping("/placeorder")//for both /,welcome this will be called
@@ -52,13 +59,7 @@ public class CustomerController {
         ModelAndView mv = new ModelAndView("customer");
         return mv;
     }
-    
-    @PostMapping("/menu")//for both /,welcome this will be called
-    public ModelAndView menuPost(Model model) {
-    	ModelAndView mv = new ModelAndView("menu");
-        return mv;
-    }
-    
+     
     @GetMapping("/menu")//for both /,welcome this will be called
     public ModelAndView menuGet(Model model) {
     	ModelAndView mv = new ModelAndView("menu");
@@ -67,20 +68,19 @@ public class CustomerController {
     
     @GetMapping("/pastorders")
     public ModelAndView pastorders() {
-       System.out.print("hello");
+       User user = userservice.findByUsername(userValidator.username);
        ModelAndView modelandview =new ModelAndView("pastorders");
-       List<Order> orders=orderservice.findAll();
-       
+       List<Order> orders=orderservice.findAllbyCustomerOrdersWithStatus(user.getId(), OrderStatus.ACCEPTED_BY_AGENT, 
+    		   OrderStatus.CANCELLED, OrderStatus.CLAIMED_BY_AGENT, OrderStatus.DELIVERED_BY_AGENT, OrderStatus.DELIVERY_COMPLETED,OrderStatus.PICKED_UP);
        modelandview.addObject("orders",orders);
 		return modelandview;
     } 
     
     @GetMapping("/currentorders")
     public ModelAndView currentorders() {
-       System.out.print("hello");
+       User user = userservice.findByUsername(userValidator.username);
        ModelAndView modelandview =new ModelAndView("orders");
-       OrderStatus status=OrderStatus.NEW;
-       List<Order> orders=orderservice.findByStatus(status);
+       List<Order> orders=orderservice.findAllbyCustomerOrdersWithStatus(user.getId(), OrderStatus.NEW);
        for(int i=0;i<orders.size();i++)
        {
     	   System.out.println(orders.get(i).getStatus());
