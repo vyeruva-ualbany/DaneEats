@@ -58,10 +58,10 @@
 							    <tr>
 							      <th scope="col">Order Id</th>
 							      <th scope="col">Destination</th>
-							      <th scope="col">source</th>
-							      <th scope="col">agentId</th>
-							      <th scope="col">status</th>
-							      <td><fmt:formatNumber value = "${order.amount}" type = "currency"/></td>
+							      <th scope="col">Source</th>
+							      <th scope="col">AgentId</th>
+							      <th scope="col">Status</th>
+							      <th scope="col">Amount</th>
 							    </tr>
 							  </thead>
 							  <tbody>

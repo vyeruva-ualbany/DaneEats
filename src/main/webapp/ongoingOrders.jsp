@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -180,7 +182,7 @@ input[type=submit] {
 				<tr>
 					<td><c:out value="${order.id}" /></td>
 					<td><c:out value="${order.agent.id}" /></td>
-					<td><c:out value="${order.amount}" /></td>
+					<td><fmt:formatNumber value ="${order.amount}" type = "currency"/></td>
 					<td><c:out value="${order.source}" /></td>
 					<td><c:out value="${order.items}"/></td>
 					<td><c:out value="${order.phoneNumber}"/></td>

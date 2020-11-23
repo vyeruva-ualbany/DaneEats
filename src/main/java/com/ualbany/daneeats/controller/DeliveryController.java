@@ -12,7 +12,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ualbany.daneeats.model.Order;
 import com.ualbany.daneeats.model.OrderStatus;
+import com.ualbany.daneeats.model.User;
 import com.ualbany.daneeats.service.OrderService;
+import com.ualbany.daneeats.service.UserService;
+import com.ualbany.daneeats.validator.UserValidator;
 
 @Controller
 @RequestMapping("/delivery")
@@ -21,6 +24,11 @@ public class DeliveryController {
 	@Autowired
 	OrderService  orderservice;
 	
+	@Autowired
+	UserService userservice;
+	
+	@Autowired
+	private UserValidator userValidator;
 	
     @PostMapping("/profile")//for both /,welcome this will be called
     public ModelAndView profilePost(Model model) {
@@ -47,17 +55,16 @@ public class DeliveryController {
     @GetMapping("/allorders")
     public ModelAndView allorders(Long agentId) {
        ModelAndView modelandview1 =new ModelAndView("adminOrders");
-       agentId = 1L;
+       User user = userservice.findByUsername(userValidator.username);
        List<Order> aorders=orderservice.findByStatus(OrderStatus.NEW);
        modelandview1.addObject("Corders",aorders);
-       List<Order> aorders1=orderservice.findAgentOrdersWithStatus(agentId,OrderStatus.ACCEPTED_BY_AGENT,OrderStatus.CLAIMED_BY_AGENT,OrderStatus.PICKED_UP);
+       List<Order> aorders1=orderservice.findAgentOrdersWithStatus(user.getId(),OrderStatus.ACCEPTED_BY_AGENT,OrderStatus.CLAIMED_BY_AGENT,OrderStatus.PICKED_UP);
        modelandview1.addObject("Corders",aorders1);
 		return modelandview1;
     } 
     
     @GetMapping("/availableorders")
     public ModelAndView availableOrders() {
-       System.out.print("hello");
        ModelAndView modelandview1 =new ModelAndView("ViewOrders");
        List<Order> aorders=orderservice.findByStatus(OrderStatus.NEW);
        modelandview1.addObject("Aorders",aorders);
@@ -66,29 +73,26 @@ public class DeliveryController {
     
     @GetMapping("/claimedorders")
     public ModelAndView claimedOrders(Long agentId) {
-       System.out.print("hello");
-       agentId = 1L;
+       User user = userservice.findByUsername(userValidator.username);
        ModelAndView modelandview2 =new ModelAndView("CurrentOrders");
-       List<Order> corders=orderservice.findAgentOrdersWithStatus(agentId, OrderStatus.CLAIMED_BY_AGENT);
+       List<Order> corders=orderservice.findAgentOrdersWithStatus(user.getId(), OrderStatus.CLAIMED_BY_AGENT);
        modelandview2.addObject("Corders",corders);
 		return modelandview2;
     } 
     @GetMapping("/currentorders")
     public ModelAndView currentOrders(Long agentId) {
-       System.out.print("hello");
-       agentId = 1L;
+       User user = userservice.findByUsername(userValidator.username);
        ModelAndView modelandview4 =new ModelAndView("ongoingOrders");
-       List<Order> corders=orderservice.findAgentOrdersWithStatus(agentId, OrderStatus.ACCEPTED_BY_AGENT,OrderStatus.PICKED_UP);
+       List<Order> corders=orderservice.findAgentOrdersWithStatus(user.getId(), OrderStatus.ACCEPTED_BY_AGENT,OrderStatus.PICKED_UP);
        modelandview4.addObject("Oorders",corders);
 		return modelandview4;
     } 
     
     @GetMapping("/previousordersd")
-    public ModelAndView previousOrdersD(Long agentId) {
-       System.out.print("hello");
-       agentId = 1L;
+    public ModelAndView previousOrdersD() {
+       User user = userservice.findByUsername(userValidator.username);
        ModelAndView modelandview3 =new ModelAndView("PreviousOrdersD");
-       List<Order> pordersD=orderservice.findAgentOrdersWithStatus(agentId, OrderStatus.DELIVERED_BY_AGENT, 
+       List<Order> pordersD=orderservice.findAgentOrdersWithStatus(user.getId(), OrderStatus.DELIVERED_BY_AGENT, 
     		   OrderStatus.DELIVERY_COMPLETED);
        modelandview3.addObject("Porders",pordersD);
 		return modelandview3;
