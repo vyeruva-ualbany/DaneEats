@@ -67,7 +67,7 @@ float:left
     </div>
     <div class="container">
 
-        <form:form method="POST" action="${contextPath}/addcustomer" modelAttribute="userForm" class="form-signin">
+        <form:form method="POST" action="${contextPath}/admin/addcustomer" modelAttribute="userForm" class="form-signin">
             <h2 class="heading" >Create Customer Account</h2>
             <spring:bind path="username">
                 <div class="form-group ${status.error ? 'has-error' : ''}">

@@ -18,7 +18,7 @@ import com.ualbany.daneeats.service.OrderService;
 import com.ualbany.daneeats.service.UserService;
 import com.ualbany.daneeats.validator.UserValidator;
 
-@Controller
+@Controller("/admin")
 public class AdminController {
 
 	@Autowired
