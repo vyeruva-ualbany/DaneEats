@@ -6,6 +6,7 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +21,7 @@ import com.ualbany.daneeats.model.MenuItem;
 import com.ualbany.daneeats.model.Restaurant;
 import com.ualbany.daneeats.service.RestaurantService;
 
-@RestController
+@Controller
 @RequestMapping("/restaurant")
 public class RestaurantController {
 
